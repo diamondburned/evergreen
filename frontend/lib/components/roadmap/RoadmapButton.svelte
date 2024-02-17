@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { afterUpdate, onDestroy, onMount } from "svelte";
+  import { afterUpdate, onDestroy, onMount, tick } from "svelte";
 
   export let label: string;
   export let description: string;
@@ -30,6 +30,7 @@
   }
 
   afterUpdate(update);
+  setTimeout(update, 100); // hack lmao
   $: {
     scrollY;
     nodeElement && update();
@@ -46,6 +47,8 @@
 
     observer = new ResizeObserver(update);
     observer.observe(nodeElement);
+
+    update();
   });
 
   onDestroy(() => {
@@ -102,7 +105,7 @@
     height: auto;
 
     position: fixed;
-    top: calc(var(--top) + 0.75rem);
+    top: calc(var(--top) + 0rem);
     left: var(--left);
 
     background-color: var(--background);

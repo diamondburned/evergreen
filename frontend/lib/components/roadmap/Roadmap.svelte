@@ -94,7 +94,7 @@
   }
 
   .sidebar {
-    width: 50%;
+    width: 20rem;
     height: fit-content;
     border-right: 1px solid rgba(var(--primary-rgb), 0.25);
     margin-top: 1rem;
