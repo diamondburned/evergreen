@@ -38,6 +38,9 @@ async def authorize(
     if session is None:
         raise HTTPException(status_code=401, detail="Unauthorized")
 
+    user_id = session.user_id
+    assert user_id is not None
+
     # If the session is after the renew threshold, renew the session.
     # Don't always renew the session, as that would force a database write on
     # every request.
@@ -47,8 +50,7 @@ async def authorize(
             db.add(session)
             await db.commit()
 
-    assert session.user_id is not None
-    yield session.user_id
+    yield user_id
 
 
 router = APIRouter(tags=["sessions"])
