@@ -1,16 +1,15 @@
 import enum
 from typing import Annotated, Optional
+from pydantic import BaseModel
 from sqlmodel import BLOB, SQLModel, Column, JSON
 from sqlmodel import Field  # type: ignore
-from datetime import datetime, timedelta
+from datetime import datetime
 from utils.id import generate_uuid, generate_token
-from ai.models import *
 
 
 class User(SQLModel, table=True):
     id: str = Field(default_factory=generate_uuid, primary_key=True)
     created_at: datetime = Field(default_factory=datetime.utcnow)
-    training_model: UserTrainingModel = Field(sa_column=Column(JSON))
 
     email: Optional[str] = Field(default=None, unique=True)
     passhash: Optional[str] = Field(default=None)
@@ -27,23 +26,28 @@ class User(SQLModel, table=True):
         return self.email is None
 
 
+class GameDifficulty(enum.Enum):
+    BEGINNER = "beginner"
+    INTERMEDIATE = "intermediate"
+    ADVANCED = "advanced"
+
+
 class ScoreSubmission(SQLModel, table=True):
-    class GameInfo(BaseModel):
-        class GameDifficulty(enum.Enum):
-            BEGINNER = "beginner"
-            INTERMEDIATE = "intermediate"
-            ADVANCED = "advanced"
-
-        category: str
-        difficulty: "GameDifficulty"
-
     id: int | None = Field(default=None, primary_key=True)
-    game: GameInfo = Field(sa_column=Column(JSON))
+    game_category: str = Field()
+    game_difficulty: GameDifficulty = Field()
     user_id: str = Field(foreign_key="user.id", index=True)
     score: float = Field(default=0)
     time_taken: Annotated[float, "Time taken in seconds."] = Field()
     revealed_answer: bool = Field()
     submitted_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+class UserAIModel(SQLModel, table=True):
+    game_category: str = Field(primary_key=True)
+    game_difficulty: GameDifficulty = Field(primary_key=True)
+    user_id: str = Field(foreign_key="user.id", primary_key=True)
+    model: bytes = Field(sa_column=Column(BLOB))
 
 
 class Session(SQLModel, table=True):
