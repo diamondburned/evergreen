@@ -34,8 +34,8 @@ async def get_self(
 
 
 class UpdateUserRequest(BaseModel):
-    email: Optional[str]
-    password: Optional[str]
+    email: Optional[str] = None
+    password: Optional[str] = None
     avatar_hash: Optional[str] = Field(None, nullable=True)
     display_name: Optional[str] = Field(None, nullable=True)
 
