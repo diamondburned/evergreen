@@ -90,6 +90,7 @@ async def create_session(
 class RegisterSessionRequest(BaseModel):
     email: str
     password: str
+    display_name: str
 
 
 @router.post("/sessions/register")
@@ -108,6 +109,7 @@ async def register_session(
 
     user.email = req.email
     user.passhash = hash_password(req.password)
+    user.display_name = req.display_name
     db.add(user)
 
 

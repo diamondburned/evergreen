@@ -1,24 +1,28 @@
 <script lang="ts">
   import RegistrationPage from "$lib/components/RegistrationPage.svelte";
-  import { login, token } from "$lib/api";
+  import { registerSession } from "$lib/api";
   import { goto } from "$app/navigation";
 
   let email = "";
   let password = "";
+  let preferredName = "";
+  $: valid = email && password && preferredName;
 
   async function submit() {
-    const session = await login({ email, password });
-    console.log(session);
-    $token = session.token;
+    await registerSession({ email, password, display_name: preferredName });
     goto("/");
   }
 </script>
 
 <svelte:head>
-  <title>Sign in</title>
+  <title>Sign up</title>
 </svelte:head>
 
-<RegistrationPage {submit} submitLabel="Sign in" valid={!!(email && password)}>
+<RegistrationPage {submit} submitLabel="Sign up" valid={!!(email && password && preferredName)}>
+  <label>
+    Preferred Name
+    <input type="text" bind:value={preferredName} />
+  </label>
   <label>
     Email
     <input type="email" bind:value={email} />

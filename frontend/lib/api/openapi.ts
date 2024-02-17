@@ -54,6 +54,7 @@ export type SessionResponse = {
 export type RegisterSessionRequest = {
     email: string;
     password: string;
+    display_name: string;
 };
 export type LoginSessionRequest = {
     email: string;
