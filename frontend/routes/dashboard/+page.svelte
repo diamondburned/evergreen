@@ -1,8 +1,8 @@
 <script lang="ts">
   import NavBar from "$lib/components/NavBar.svelte";
   import WhitePage from "$lib/components/WhitePage.svelte";
-  // import Roadmap from "$lib/components/Roadmap.svelte";
-  // import categories from "$lib/categories.json";
+  import Roadmap from "$lib/components/roadmap/Roadmap.svelte";
+  import categories from "$lib/categories.json";
 </script>
 
 <svelte:head>
@@ -16,28 +16,7 @@
 
   <section class="container roadmap-section">
     <h2 class="container">Study Plan</h2>
-<<<<<<< Updated upstream
-    <!-- <Roadmap {categories} /> -->
-=======
-
-    <aside>
-      <ul>
-        {#each Object.entries(categories) as [name, category]}
-          <li>
-            <a
-              href={'#'}
-              class:active={currentCategory == name}
-              on:click|preventDefault={() => (currentCategory = name)}
-            >
-              {category.label}
-            </a>
-          </li>
-        {/each}
-      </ul>
-    </aside>
-
-    <div class="roadmap"></div>
->>>>>>> Stashed changes
+    <Roadmap {categories} />
   </section>
 
   <section class="container">

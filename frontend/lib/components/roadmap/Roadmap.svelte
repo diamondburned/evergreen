@@ -1,22 +1,24 @@
 <script lang="ts">
   import { cubicOut, cubicIn } from "svelte/easing";
   import { fly } from "svelte/transition";
-  import { tooltip } from "@svelte-plugins/tooltips";
-  import RoadmapSVG from "$lib/components/RoadmapSVG.svelte";
+  import SVG from "$lib/components/roadmap/SVG.svelte";
+  import RoadmapButton from "$lib/components/roadmap/RoadmapButton.svelte";
+
+  type CategoryLevel = {
+    label: string;
+    description: string;
+  };
 
   type Categories = Record<
     string,
     {
       label: string;
-      levels: {
-        label: string;
-        description: string;
-      }[];
+      levels: [CategoryLevel, CategoryLevel, CategoryLevel];
     }
   >;
 
   export let categories: Categories = {};
-  export let currentCategory = Object.keys(categories)[0];
+  export let currentCategory = Object.keys(categories)[0]!;
 
   const duration = 150;
   const delay = 20;
@@ -26,7 +28,7 @@
   const transitionOut = { easing: cubicIn, y: -y, duration };
 
   $: flip = Object.keys(categories).indexOf(currentCategory) % 2 === 0;
-  $: levels = categories[currentCategory].levels;
+  $: levels = categories[currentCategory]!.levels;
 </script>
 
 <div class="roadmap">
@@ -35,7 +37,7 @@
       {#each Object.entries(categories) as [name, category]}
         <li>
           <a
-            href="#"
+            href={"#"}
             class:active={currentCategory == name}
             on:click|preventDefault={() => (currentCategory = name)}
           >
@@ -49,50 +51,27 @@
   <div class="roadmap-container">
     {#key currentCategory}
       <div class="roadmap-box" class:flip in:fly={transitionIn} out:fly={transitionOut}>
-        <RoadmapSVG>
-          <p
-            class="node"
-            slot="1"
-            use:tooltip={{
-              action: "hover",
-              content: levels[0].description,
-              autoPosition: true,
-              delay: 0,
-            }}
-          >
-            {levels[0].label}
-          </p>
-          <p
-            class="node"
-            slot="2"
-            use:tooltip={{
-              action: "hover",
-              content: levels[1].description,
-              autoPosition: true,
-              delay: 0,
-            }}
-          >
-            {levels[1].label}
-          </p>
-          <p
-            class="node"
-            slot="3"
-            use:tooltip={{
-              action: "hover",
-              content: levels[2].description,
-              autoPosition: true,
-              delay: 0,
-            }}
-          >
-            {levels[2].label}
-          </p>
-        </RoadmapSVG>
+        <SVG>
+          <div class="contents" slot="1">
+            <RoadmapButton label={levels[0].label} description={levels[0].description} {flip} />
+          </div>
+          <div class="contents" slot="2">
+            <RoadmapButton label={levels[1].label} description={levels[1].description} {flip} />
+          </div>
+          <div class="contents" slot="3">
+            <RoadmapButton label={levels[2].label} description={levels[2].description} {flip} />
+          </div>
+        </SVG>
       </div>
     {/key}
   </div>
 </div>
 
 <style lang="scss">
+  .contents {
+    display: contents;
+  }
+
   .roadmap {
     display: flex;
     flex-direction: row;
@@ -110,26 +89,6 @@
 
       &.flip {
         transform: rotateY(180deg);
-
-        p.node {
-          transform: rotateY(180deg);
-        }
-      }
-    }
-
-    p.node {
-      width: fit-content;
-      margin: auto;
-      border: 2px solid var(--primary);
-      border-radius: 15px;
-      padding: 0.45rem 1.5rem;
-
-      transition: all 0.1s ease-in-out;
-
-      &:hover {
-        background-color: var(--primary);
-        color: var(--background);
-        cursor: help;
       }
     }
   }
