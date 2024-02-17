@@ -7,16 +7,16 @@ export default defineConfig({
   clearScreen: false, // fuck Vite lol
   plugins: [
     sveltekit(),
-    run({
-      input: {
-        name: "generate OpenAPI client",
-        run: ["node", "utils/generate-openapi.js"],
-        pattern: ["**/*.py"],
-        startup: true,
-        build: true,
-      },
-      silent: false,
-    }),
+    // run({
+    //   input: {
+    //     name: "generate OpenAPI client",
+    //     run: ["node", "utils/generate-openapi.js"],
+    //     pattern: ["**/*.py"],
+    //     startup: true,
+    //     build: true,
+    //   },
+    //   silent: false,
+    // }),
   ],
   server: {
     host: true,

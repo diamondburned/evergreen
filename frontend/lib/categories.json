@@ -1,0 +1,104 @@
+{
+  "probability-statistics": {
+    "label": "Probability & Statistics",
+    "levels": [
+      {
+        "label": "Combinatorics",
+        "description": "The study of counting and arranging objects."
+      },
+      {
+        "label": "Regression",
+        "description": "The study of the relationship between variables."
+      },
+      {
+        "label": "Bayesian Statistics",
+        "description": "The study of probability as a measure of uncertainty."
+      }
+    ]
+  },
+  "data-structures": {
+    "label": "Data Structures",
+    "levels": [
+      {
+        "label": "Arrays",
+        "description": "A collection of elements."
+      },
+      {
+        "label": "Binary Trees",
+        "description": "A tree data structure in which each node has at most two children."
+      },
+      {
+        "label": "Linked Lists",
+        "description": "A linear collection of elements, where each element points to the next."
+      }
+    ]
+  },
+  "object-oriented-programming": {
+    "label": "Object-Oriented Programming",
+    "levels": [
+      {
+        "label": "Classes",
+        "description": "A blueprint for creating objects."
+      },
+      {
+        "label": "Polymorphism",
+        "description": "The ability to present the same interface for different data types."
+      },
+      {
+        "label": "Design Patterns",
+        "description": "A general reusable solution to a commonly occurring problem."
+      }
+    ]
+  },
+  "algorithms": {
+    "label": "Algorithms",
+    "levels": [
+      {
+        "label": "Binary Search",
+        "description": "A search algorithm that finds the position of a target value within a sorted array."
+      },
+      {
+        "label": "Dijkstra's",
+        "description": "An algorithm for finding the shortest path between nodes in a graph."
+      },
+      {
+        "label": "NP-Completeness",
+        "description": "A class of problems for which no efficient solution is known."
+      }
+    ]
+  },
+  "dynamic-programming": {
+    "label": "Dynamic Programming",
+    "levels": [
+      {
+        "label": "Fibonacci Sequence",
+        "description": "A sequence of numbers in which each number is the sum of the two preceding ones."
+      },
+      {
+        "label": "Memoization",
+        "description": "An optimization technique used primarily to speed up computer programs."
+      },
+      {
+        "label": "State Machine Optimization",
+        "description": "A mathematical model of computation used to design both computer programs and sequential logic circuits."
+      }
+    ]
+  },
+  "machine-learning": {
+    "label": "Machine Learning",
+    "levels": [
+      {
+        "label": "Decision Tree",
+        "description": "A decision support tool that uses a tree-like graph or model of decisions and their possible consequences."
+      },
+      {
+        "label": "Dimensionality Reduction",
+        "description": "The process of reducing the number of random variables under consideration."
+      },
+      {
+        "label": "Neural Networks",
+        "description": "A network or circuit of neurons, or in a modern sense, an artificial neural network."
+      }
+    ]
+  }
+}
