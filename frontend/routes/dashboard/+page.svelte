@@ -1,12 +1,14 @@
 <script lang="ts">
-  import Header from "$lib/components/Header.svelte";
+  import NavBar from "$lib/components/NavBar.svelte";
 </script>
 
 <svelte:head>
   <title>Dashboard</title>
 </svelte:head>
 
-<Header />
+<header class="container">
+  <NavBar />
+</header>
 
 <main class="container">
   <header>

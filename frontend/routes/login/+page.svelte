@@ -1,8 +1,9 @@
 <script lang="ts">
-	// import { PageData } from './../../../.svelte-kit/types/frontend/routes/$types.d.ts';
-	import Hero from './../../lib/components/Hero.svelte';
+  // import { PageData } from './../../../.svelte-kit/types/frontend/routes/$types.d.ts';
+  import Hero from "./../../lib/components/Hero.svelte";
   import { isLoggedIn, token, login } from "$lib/api";
   import { goto } from "$app/navigation";
+  import NavBar from "$lib/components/NavBar.svelte";
 
   $: {
     if ($isLoggedIn) {
@@ -28,58 +29,77 @@
 </svelte:head>
 
 <Hero>
-  <article>
+  <header>
+    <NavBar navigation={[]} />
+  </header>
+
+  <main>
     <form>
-        <label> Email*</label> <br>
+      <label>
+        Email
         <input type="email" bind:value={email} />
-        <br>
-        <label> Password*</label> <br>
+      </label>
+      <label>
+        Password
         <input type="password" bind:value={password} />
-      <div role="group">
-        <button disabled={!valid} on:click={() => submit("login")}> Sign In </button>
-      </div>
+      </label>
+      <button class="floaty inverted" disabled={!valid} on:click={() => submit("login")}>
+        Sign in
+      </button>
     </form>
-  </article>
+  </main>
 </Hero>
 
 <style lang="scss">
-  article {
-    max-width: 400px;
-    margin: auto;
+  main,
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
+
+  main,
   header {
-    text-align: center;
+    position: absolute;
   }
-  h1 {
-    font-size: 4em;
-    text-shadow: 2px 2px 2px black;
-  }
-  label {
-    font-size: 20px;
-  }
-  input {
-    padding: 0.5em;
-    font-size: 1.25em;
-    margin-bottom: 36px;
-    margin-top: 10px;
-    border-radius: 20px;
-    width: 300px;
-  }
-  div[role=group] {
-    margin-top: 36px;
-    text-align: center;
-  }
-  button {
-    padding: 0.75em;
-    width: 180px;
-    max-width: 90%;
 
-    border: none;
-    border-radius: 20px;
-    transition: all 0.15s linear;
+  main {
+    width: 100%;
+    height: 100%;
+  }
 
-    &:hover {
-      box-shadow: 0 0.5em 0.5em -0.4em var(--md-sys-color-shadow);
+  form {
+    gap: 2rem;
+
+    label {
+      width: 100%;
+      max-width: 300px;
+
+      display: flex;
+      flex-direction: column;
+
+      font-size: 0.95em;
+      font-weight: 700;
+      font-family: "Linotte", sans-serif;
+
+      input {
+        margin-top: 0.25em;
+        padding: 0.5em;
+        border: 1px solid var(--primary);
+        border-radius: 15px;
+      }
+    }
+
+    button {
+      padding: 0.5em 2em;
+
+      border-radius: 15px;
+      transition: all 0.15s linear;
+
+      &:hover {
+        box-shadow: 0 0.5em 0.5em -0.4em var(--md-sys-color-shadow);
+      }
     }
   }
 </style>

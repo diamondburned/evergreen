@@ -12,7 +12,10 @@
 
 <Hero>
   <div class="content">
-    <h1 class="brand">Evergreen</h1>
+    <hgroup>
+      <img src="/logo.png" alt="Evergreen Logo" class="logo" />
+      <h1 class="brand">Evergreen</h1>
+    </hgroup>
     <div class="bottom">
       {#if !$isAuthorized}
         <div out:fly={{ y: -30, duration: 500 }}>
@@ -20,7 +23,7 @@
         </div>
       {:else}
         <div in:fly={{ y: 30, duration: 500, delay: 500 }}>
-          <button class="on-secondary-text">Play</button>
+          <button class="floaty inverted">Play</button>
           <p class="login">Already played? <a href="/login">Sign In</a></p>
         </div>
       {/if}
@@ -29,26 +32,34 @@
 </Hero>
 
 <style lang="scss">
-  .content {
-    gap: 1rem;
-  }
-
   .content,
-  .content > div {
+  .content > div,
+  .content > hgroup {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
 
+  .content {
+    gap: 1rem;
+    height: 100%;
+    justify-content: space-evenly;
+  }
+
+  .logo {
+    width: 200px;
+    margin: auto;
+  }
+
   .bottom {
-    height: 6rem;
+    height: 5rem;
   }
 
   h1 {
-    font-size: 5em;
-    text-shadow: 2px 2px 2px black;
+    font-size: 3.5em;
     margin: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   }
 
   button {
@@ -60,16 +71,9 @@
 
     border: none;
     border-radius: 15px;
-    transition: all 0.15s ease-in-out;
 
-    &:hover {
-      box-shadow: 0 0.5em 1.2em -1em var(--md-sys-color-shadow);
-      transform: translateY(-0.1em);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
+    background-color: var(--primary);
+    color: white;
   }
 
   p.login {
