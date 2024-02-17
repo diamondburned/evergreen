@@ -111,3 +111,16 @@ button.inverted {
   background-color: var(--primary);
   color: var(--background);
 }
+
+button.hover {
+  transition: all 0.15s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0.5em 1.2em -1em var(--md-sys-color-shadow);
+      transform: translateY(-0.1em);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+}
