@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Linotte";
+  src:
+    local("Linotte-Bold"),
+    url("assets/fonts/Linotte Bold.otf") format("opentype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Linotte";
+  src:
+    local("Linotte-Regular"),
+    url("assets/fonts/Linotte Regular.otf") format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Linotte";
+  src:
+    local("Linotte-SemiBold"),
+    url("assets/fonts/Linotte Semi Bold.otf") format("opentype");
+  font-weight: 600;
+}

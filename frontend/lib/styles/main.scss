@@ -1,9 +1,16 @@
+@use "linotte";
+
 :root {
   --border-radius: 25px;
 }
 
 body {
   font-family: "Lato", sans-serif;
+}
+
+h1.brand {
+  font-family: "Linotte", sans-serif;
+  font-weight: 600;
 }
 
 h1,
