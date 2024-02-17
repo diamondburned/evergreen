@@ -48,14 +48,20 @@
 
     z-index: 100;
 
+    ul {
+      padding: 0;
+    }
+
     ul:nth-child(2) {
       height: fit-content;
       margin: auto 0;
+      list-style: none;
+      display: flex;
+      gap: 2rem;
     }
 
     li {
       display: inline;
-      padding-right: 50px;
     }
 
     a {

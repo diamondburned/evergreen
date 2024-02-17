@@ -2,9 +2,36 @@
 
 :root {
   --border-radius: 25px;
+
   --primary: #336666;
+  --primary-rgb: 51, 102, 102;
+
   --background: #f6f7e9;
+  --background-rgb: 246, 247, 233;
+
   --form-background: #ffffff;
+  --form-background-rgb: 255, 255, 255;
+
+  --gradient-size: 85%;
+  --gradient-color-1: 149, 177, 176;
+  --gradient-color-2: 138, 142, 174;
+  --gradient-color-3: 155, 191, 101;
+
+  --background-gradient: radial-gradient(
+      circle at calc(50%) calc(100%),
+      rgba(var(--gradient-color-1), 1) 0%,
+      rgba(var(--gradient-color-1), 0) var(--gradient-size)
+    ),
+    radial-gradient(
+      circle at calc(0%) calc(0%),
+      rgba(var(--gradient-color-2), 1) 0%,
+      rgba(var(--gradient-color-2), 0) var(--gradient-size)
+    ),
+    radial-gradient(
+      circle at calc(100%) calc(0%),
+      rgba(var(--gradient-color-3), 1) 0%,
+      rgba(var(--gradient-color-3), 0) var(--gradient-size)
+    );
 }
 
 html,
@@ -59,6 +86,7 @@ input {
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 button.floaty {

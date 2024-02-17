@@ -56,6 +56,10 @@
     position: absolute;
   }
 
+  header {
+    z-index: 1;
+  }
+
   main {
     width: 100%;
     height: 100%;
