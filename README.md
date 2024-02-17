@@ -23,6 +23,7 @@ Once you have the development environment set up, you can run the following
 commands:
 
 ```sh
-npm install    # install frontend dependencies
-foreman start  # start the development server
+poetry install --no-root  # install backend dependencies
+npm install               # install frontend dependencies
+foreman start             # start the development server
 ```
