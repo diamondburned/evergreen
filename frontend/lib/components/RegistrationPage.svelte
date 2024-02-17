@@ -58,6 +58,7 @@
 
   header {
     z-index: 1;
+    margin: 0 1rem;
   }
 
   main {
