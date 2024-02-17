@@ -8,6 +8,17 @@ import * as os from "os";
 const BACKEND_PORT = 5766;
 
 async function generateForDir(tmpDir) {
+  let backendAlreadyRunning = false;
+  try {
+    await fetch(`http://localhost:${BACKEND_PORT}/openapi.json`);
+    backendAlreadyRunning = true;
+  } catch (err) {
+    // ok
+  }
+  if (backendAlreadyRunning) {
+    throw new Error("backend is already running even though it shouldn't be");
+  }
+
   console.debug("Fetching openapi.json...");
   let response;
   while (true) {
@@ -70,6 +81,7 @@ async function generate() {
   } finally {
     await stopBackend();
     await fs.rm(tempDir, { recursive: true });
+    console.debug();
   }
 }
 
