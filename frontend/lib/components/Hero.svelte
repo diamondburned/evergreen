@@ -1,4 +1,4 @@
-<div class="container background">
+<div class="background">
   <div class="content">
     <slot />
   </div>
@@ -6,7 +6,7 @@
 </div>
 
 <style lang="scss">
-  .container {
+  .background {
     display: flex;
     justify-content: center;
     align-items: center;

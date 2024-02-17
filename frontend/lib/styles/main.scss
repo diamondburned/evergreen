@@ -24,6 +24,11 @@ h1.brand {
   font-size: 3rem;
 }
 
+.brand-text {
+  font-family: "Linotte", sans-serif;
+  font-weight: 600;
+}
+
 h1,
 h2,
 h3,
@@ -35,4 +40,12 @@ h6 {
 
 * {
   box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
 }
