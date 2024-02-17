@@ -1,59 +1,54 @@
 <script lang="ts">
-  let thing = "hi";
+  import Hero from "$lib/components/Hero.svelte";
 </script>
 
 <svelte:head>
   <title>Home</title>
-  <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div class="container background">
-  <img src="/blurred.webp"/>
-  <h1>Evergreen</h1>
-  <button><p class="on-secondary-text">Play</p></button>
-  <h3>Already played? <u>Login</u></h3>
-</div>
+<Hero>
+  <div class="content">
+    <h1 class="brand">Evergreen</h1>
+    <button><p class="on-secondary-text">Play</p></button>
+    <h3>Already played? <a href="/login">Login</a></h3>
+  </div>
+</Hero>
 
 <style lang="scss">
-  .container {
+  .content {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 800px;
-    img {
-      width:95%;
-      height:90%;
-      border-radius:25px;
-      border: 1px solid;
-      box-shadow: 4em 4em 0.5em 0.5em var(--md-sys-color-shadow) inset;
-    }
-    h1 {
-      position: absolute;
-      top: 320px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 60px;
-      text-shadow: 2px 2px 2px black;
-    }
-    button {
-      margin-top: 90px;
-      position: absolute;
-      width: 200px;
-      height: 45px;
-      border-radius: 15px;
-      transition: all 0.15s linear;
-      p {
-        font-size: 22px;
-        margin: auto;
-      }
-    }
-    button:hover {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  h1 {
+    font-size: 5em;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+  }
+
+  button {
+    padding: 0.75em;
+    width: 300px;
+    max-width: 90%;
+
+    border: none;
+    border-radius: 15px;
+    transition: all 0.15s linear;
+
+    &:hover {
       box-shadow: 0 0.5em 0.5em -0.4em var(--md-sys-color-shadow);
     }
 
-    h3 {
-      margin-top: 240px;
-      position: absolute;
+    p {
+      font-size: 22px;
+      margin: auto;
     }
+  }
+
+  h3 {
+    margin: 0.5rem;
   }
 </style>

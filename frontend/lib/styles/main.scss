@@ -4,13 +4,24 @@
   --border-radius: 25px;
 }
 
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 body {
   font-family: "Lato", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
 }
 
 h1.brand {
   font-family: "Linotte", sans-serif;
-  font-weight: 600;
+  font-weight: bold;
+  font-size: 3rem;
 }
 
 h1,
@@ -20,4 +31,8 @@ h4,
 h5,
 h6 {
   font-family: "Nunito", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
