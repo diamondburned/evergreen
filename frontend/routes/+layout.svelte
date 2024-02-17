@@ -14,19 +14,4 @@
   />
 </svelte:head>
 
-<header>
-  <nav>
-    <ul>
-      <li><strong>PixieCode</strong></li>
-    </ul>
-    <ul>
-      {#if !$isLoggedIn}
-        <li>
-          <a role="button" href="/login">Register</a>
-        </li>
-      {/if}
-    </ul>
-  </nav>
-</header>
-
 <slot />
