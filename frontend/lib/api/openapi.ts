@@ -40,8 +40,8 @@ export type UserResponse = {
     display_name: string | null;
 };
 export type UpdateUserRequest = {
-    email: string | null;
-    password: string | null;
+    email?: string | null;
+    password?: string | null;
     avatar_hash?: string | null;
     display_name?: string | null;
 };
