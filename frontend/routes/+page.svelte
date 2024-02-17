@@ -21,7 +21,7 @@
       {:else}
         <div in:fly={{ y: 30, duration: 500, delay: 500 }}>
           <button class="on-secondary-text">Play</button>
-          <p class="login">Already played? <a href="/login">Login</a></p>
+          <p class="login">Already played? <a href="/login">Sign In</a></p>
         </div>
       {/if}
     </div>

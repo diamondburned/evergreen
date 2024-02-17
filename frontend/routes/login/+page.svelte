@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { isLoggedIn, token, login, register } from "$lib/api";
+	// import { PageData } from './../../../.svelte-kit/types/frontend/routes/$types.d.ts';
+	import Hero from './../../lib/components/Hero.svelte';
+  import { isLoggedIn, token, login } from "$lib/api";
   import { goto } from "$app/navigation";
 
   $: {
@@ -15,53 +17,69 @@
 
   async function submit(action: "login" | "register") {
     let session;
-    switch (action) {
-      case "login":
-        session = await login({ email, password });
-        break;
-      case "register":
-        session = await register({ email, password });
-        break;
-    }
+    session = await login({ email, password });
     console.log(session);
     $token = session.token;
   }
 </script>
 
 <svelte:head>
-  <title>Register</title>
+  <title>Login</title>
 </svelte:head>
 
-<article>
-  <header>
-    <hgroup>
-      <h2>Login</h2>
-    </hgroup>
-  </header>
-
-  <form>
-    <fieldset>
-      <label>
-        Email
+<Hero>
+  <article>
+    <form>
+        <label> Email*</label> <br>
         <input type="email" bind:value={email} />
-      </label>
-
-      <label>
-        Password
+        <br>
+        <label> Password*</label> <br>
         <input type="password" bind:value={password} />
-      </label>
-    </fieldset>
-
-    <div role="group">
-      <button disabled={!valid} on:click={() => submit("login")}> Login </button>
-      <button disabled={!valid} on:click={() => submit("register")}> Register </button>
-    </div>
-  </form>
-</article>
+      <div role="group">
+        <button disabled={!valid} on:click={() => submit("login")}> Sign In </button>
+      </div>
+    </form>
+  </article>
+</Hero>
 
 <style lang="scss">
   article {
     max-width: 400px;
     margin: auto;
+  }
+  header {
+    text-align: center;
+  }
+  h1 {
+    font-size: 4em;
+    text-shadow: 2px 2px 2px black;
+  }
+  label {
+    font-size: 20px;
+  }
+  input {
+    padding: 0.5em;
+    font-size: 1.25em;
+    margin-bottom: 36px;
+    margin-top: 10px;
+    border-radius: 20px;
+    width: 300px;
+  }
+  div[role=group] {
+    margin-top: 36px;
+    text-align: center;
+  }
+  button {
+    padding: 0.75em;
+    width: 180px;
+    max-width: 90%;
+
+    border: none;
+    border-radius: 20px;
+    transition: all 0.15s linear;
+
+    &:hover {
+      box-shadow: 0 0.5em 0.5em -0.4em var(--md-sys-color-shadow);
+    }
   }
 </style>
