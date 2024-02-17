@@ -97,7 +97,8 @@
     width: 20rem;
     height: fit-content;
     border-right: 1px solid rgba(var(--primary-rgb), 0.25);
-    margin-top: 1rem;
+    margin: auto;
+    padding: 2rem 0;
     padding-right: 1rem;
 
     ul {
@@ -110,6 +111,7 @@
       padding: 0.5rem 0.25rem;
       display: block;
       text-decoration: none;
+      position: relative;
 
       opacity: 0.65;
       transition: all 0.1s ease-in-out;
@@ -126,7 +128,7 @@
         &::before {
           content: "● ";
           position: absolute;
-          left: 1.25rem;
+          left: -1.25rem;
           font-size: 1rem;
         }
       }

@@ -12,6 +12,7 @@
   let nodeElement: HTMLElement;
   let scrollY: number;
 
+  let destroyed = false;
   function update() {
     const rect = nodeElement.getBoundingClientRect();
     const anchorX = rect.x + rect.width / 2;
@@ -27,16 +28,12 @@
 
     tooltipElement.style.setProperty("--top", `${top}px`);
     tooltipElement.style.setProperty("--left", `${left}px`);
-  }
 
-  afterUpdate(update);
-  setTimeout(update, 100); // hack lmao
-  $: {
-    scrollY;
-    nodeElement && update();
+    if (!destroyed) {
+      // hack lmao
+      requestAnimationFrame(update);
+    }
   }
-
-  let observer: ResizeObserver;
 
   onMount(() => {
     tooltipElement = document.createElement("p");
@@ -44,16 +41,11 @@
     tooltipElement.textContent = description;
 
     document.body.appendChild(tooltipElement);
-
-    observer = new ResizeObserver(update);
-    observer.observe(nodeElement);
-
     update();
   });
 
   onDestroy(() => {
     document.body.removeChild(tooltipElement);
-    observer.disconnect();
   });
 </script>
 

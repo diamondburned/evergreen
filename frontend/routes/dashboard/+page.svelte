@@ -15,7 +15,7 @@
   </header>
 
   <section class="container roadmap-section">
-    <h2 class="container">Study Plan</h2>
+    <h2>Study Plan</h2>
     <Roadmap {categories} />
   </section>
 

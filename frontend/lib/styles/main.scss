@@ -83,10 +83,10 @@ input {
 .container {
   display: flex;
   align-items: center;
-  max-width: 1000px;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 clamp(0.5rem, 3vw, 2rem);
 }
 
 button.floaty {
@@ -115,12 +115,12 @@ button.inverted {
 button.hover {
   transition: all 0.15s ease-in-out;
 
-    &:hover {
-      box-shadow: 0 0.5em 1.2em -1em var(--md-sys-color-shadow);
-      transform: translateY(-0.1em);
-    }
+  &:hover {
+    box-shadow: 0 0.5em 1.2em -1em var(--md-sys-color-shadow);
+    transform: translateY(-0.1em);
+  }
 
-    &:active {
-      transform: translateY(0);
-    }
+  &:active {
+    transform: translateY(0);
+  }
 }
