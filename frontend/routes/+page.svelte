@@ -1,5 +1,9 @@
 <script lang="ts">
+  import { fly } from "svelte/transition";
+  import { isAuthorized } from "$lib/api";
+
   import Hero from "$lib/components/Hero.svelte";
+  import LoadingDots from "$lib/components/LoadingDots.svelte";
 </script>
 
 <svelte:head>
@@ -9,18 +13,36 @@
 <Hero>
   <div class="content">
     <h1 class="brand">Evergreen</h1>
-    <button><p class="on-secondary-text">Play</p></button>
-    <h3>Already played? <a href="/login">Login</a></h3>
+    <div class="bottom">
+      {#if !$isAuthorized}
+        <div out:fly={{ y: -30, duration: 500 }}>
+          <LoadingDots dotSize={24} distance={32} />
+        </div>
+      {:else}
+        <div in:fly={{ y: 30, duration: 500, delay: 500 }}>
+          <button class="on-secondary-text">Play</button>
+          <p class="login">Already played? <a href="/login">Login</a></p>
+        </div>
+      {/if}
+    </div>
   </div>
 </Hero>
 
 <style lang="scss">
   .content {
+    gap: 1rem;
+  }
+
+  .content,
+  .content > div {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 1rem;
+  }
+
+  .bottom {
+    height: 6rem;
   }
 
   h1 {
@@ -32,23 +54,33 @@
   button {
     padding: 0.75em;
     width: 300px;
-    max-width: 90%;
+    max-width: 100%;
+
+    font-size: 22px;
 
     border: none;
     border-radius: 15px;
-    transition: all 0.15s linear;
+    transition: all 0.15s ease-in-out;
 
     &:hover {
-      box-shadow: 0 0.5em 0.5em -0.4em var(--md-sys-color-shadow);
+      box-shadow: 0 0.5em 1.2em -1em var(--md-sys-color-shadow);
+      transform: translateY(-0.1em);
     }
 
-    p {
-      font-size: 22px;
-      margin: auto;
+    &:active {
+      transform: translateY(0);
     }
   }
 
-  h3 {
-    margin: 0.5rem;
+  p.login {
+    margin: 1rem;
+    text-align: center;
+    font-weight: 400;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      font-weight: 600;
+    }
   }
 </style>

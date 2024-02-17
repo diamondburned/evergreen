@@ -2,8 +2,18 @@
   import "normalize.css/normalize.css";
   import "$lib/styles/material-css/theme.css";
   import "$lib/styles/main.scss";
+
+  import { onMount } from "svelte";
+  import { token, createSession } from "$lib/api";
+
+  onMount(async () => {
+    if (!$token) {
+      const session = await createSession();
+      $token = session.token;
+    }
+  });
 </script>
-  
+
 <svelte:head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />

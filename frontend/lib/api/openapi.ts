@@ -45,10 +45,11 @@ export type UpdateUserRequest = {
     avatar_hash?: string | null;
     display_name?: string | null;
 };
-export type Session = {
-    token?: string;
-    user_id: string | null;
-    expires_at?: string;
+export type SessionResponse = {
+    token: string;
+    user_id: string;
+    expires_at: string;
+    is_anonymous: boolean;
 };
 export type RegisterSessionRequest = {
     email: string;
@@ -135,7 +136,7 @@ export function updateSelf(updateUserRequest: UpdateUserRequest, opts?: Oazapfts
 export function createSession(opts?: Oazapfts.RequestOpts) {
     return oazapfts.ok(oazapfts.fetchJson<{
         status: 200;
-        data: Session;
+        data: SessionResponse;
     }>("/api/sessions", {
         ...opts,
         method: "POST"
@@ -163,7 +164,7 @@ export function registerSession(registerSessionRequest: RegisterSessionRequest, 
 export function login(loginSessionRequest: LoginSessionRequest, opts?: Oazapfts.RequestOpts) {
     return oazapfts.ok(oazapfts.fetchJson<{
         status: 200;
-        data: Session;
+        data: SessionResponse;
     } | {
         status: 422;
         data: HttpValidationError;

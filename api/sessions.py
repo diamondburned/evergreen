@@ -54,10 +54,17 @@ async def authorize(
 router = APIRouter(tags=["sessions"])
 
 
+class SessionResponse(BaseModel):
+    token: str
+    user_id: str
+    expires_at: datetime
+    is_anonymous: bool
+
+
 @router.post("/sessions")
 async def create_session(
     db: Database = Depends(db.use),
-) -> Session:
+) -> SessionResponse:
     """
     Create a new session assigned to a new and anonymous user.
     The user may later choose to register and log in.
@@ -74,7 +81,10 @@ async def create_session(
 
     await db.refresh(session)
 
-    return session
+    return SessionResponse(
+        **session.model_dump(),
+        is_anonymous=True,
+    )
 
 
 class RegisterSessionRequest(BaseModel):
@@ -110,7 +120,7 @@ class LoginSessionRequest(BaseModel):
 async def login(
     req: LoginSessionRequest,
     db: Database = Depends(db.use),
-) -> Session:
+) -> SessionResponse:
     """
     Log in with an email and password.
     """
@@ -131,7 +141,10 @@ async def login(
 
     await db.refresh(session)
 
-    return session
+    return SessionResponse(
+        **session.model_dump(),
+        is_anonymous=False,
+    )
 
 
 def generate_token() -> str:
