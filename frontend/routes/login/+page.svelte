@@ -54,9 +54,7 @@
 
     <div role="group">
       <button disabled={!valid} on:click={() => submit("login")}> Login </button>
-      <button disabled={!valid} class="secondary" on:click={() => submit("register")}>
-        Register
-      </button>
+      <button disabled={!valid} on:click={() => submit("register")}> Register </button>
     </div>
   </form>
 </article>
