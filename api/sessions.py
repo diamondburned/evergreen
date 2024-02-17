@@ -4,6 +4,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from db import Database
 from db.models import *
+from ai.models import *
 from sqlmodel import select
 from datetime import datetime, timedelta
 import secrets
@@ -16,58 +17,10 @@ SESSION_EXPIRY = timedelta(days=7)
 SESSION_RENEW_AFTER = timedelta(days=1)
 
 
-router = APIRouter(tags=["sessions"])
-
-
-class LoginRequest(BaseModel):
-    email: str
-    password: str
-
-
-@router.post("/login")
-async def login(
-    req: LoginRequest,
-    db: Database = Depends(db.use),
-) -> Session:
-    """
-    This function logs in a user and returns a session token.
-    """
-    user = (await db.exec(select(User).where(User.email == req.email))).first()
-    if user is None or not verify_password(req.password, user.passhash):
-        raise HTTPException(status_code=401, detail="Unauthorized")
-
-    return new_session(db, user.id)
-
-
-class RegisterRequest(BaseModel):
-    email: str
-    password: str
-
-
-@router.post("/register")
-async def register(
-    req: RegisterRequest,
-    db: Database = Depends(db.use),
-) -> Session:
-    """
-    This function registers a new user and returns a session token.
-    """
-    user = User(
-        email=req.email,
-        passhash=hash_password(req.password),
-    )
-    db.add(user)
-
-    await db.commit()
-    await db.refresh(user)
-
-    return new_session(db, user.id)
-
-
 async def authorize(
     creds: HTTPAuthorizationCredentials = Depends(HTTPBearer()),
     db: Database = Depends(db.use),
-) -> AsyncGenerator[int, None]:
+) -> AsyncGenerator[str, None]:
     """
     This function asserts the authorization header and returns the user ID if
     the token is valid.
@@ -98,17 +51,86 @@ async def authorize(
     yield session.user_id
 
 
-def new_session(db: Database, user_id: int) -> Session:
+router = APIRouter(tags=["sessions"])
+
+
+@router.post("/sessions")
+async def create_session(
+    db: Database = Depends(db.use),
+) -> Session:
     """
-    This function creates a new session for a user and adds it to the database.
-    The session is returned.
+    Create a new session assigned to a new and anonymous user.
+    The user may later choose to register and log in.
     """
-    session = Session(
-        token=generate_token(),
-        user_id=user_id,
-        expires_at=datetime.now() + SESSION_EXPIRY,
-    )
-    db.add(session)
+    async with db.begin_nested():
+        user = User(training_model=UserTrainingModel())
+        db.add(user)
+
+    await db.refresh(user)
+
+    async with db.begin_nested():
+        session = Session(user_id=user.id)
+        db.add(session)
+
+    await db.refresh(session)
+
+    return session
+
+
+class RegisterSessionRequest(BaseModel):
+    email: str
+    password: str
+
+
+@router.post("/sessions/register")
+async def register_session(
+    req: RegisterSessionRequest,
+    db: Database = Depends(db.use),
+    user_id: str = Depends(authorize),
+) -> None:
+    """
+    Register a user with an email and password.
+    The user must be anonymous to register.
+    """
+    user = await db.get_one(User, user_id)
+    if not user.is_anonymous():
+        raise HTTPException(status_code=400, detail="User already registered")
+
+    user.email = req.email
+    user.passhash = hash_password(req.password)
+    db.add(user)
+
+
+class LoginSessionRequest(BaseModel):
+    email: str
+    password: str
+
+
+@router.post("/login")
+async def login(
+    req: LoginSessionRequest,
+    db: Database = Depends(db.use),
+) -> Session:
+    """
+    Log in with an email and password.
+    """
+    user_query = await db.exec(select(User).where(User.email == req.email))
+    user = user_query.first()
+    if user is None:
+        raise HTTPException(status_code=400, detail="Invalid email or password")
+
+    # passhash cannot be None if email is not None
+    assert user.passhash is not None
+
+    if not verify_password(req.password, user.passhash):
+        raise HTTPException(status_code=400, detail="Invalid email or password")
+
+    async with db.begin_nested():
+        session = Session(user_id=user.id)
+        db.add(session)
+
+    await db.refresh(session)
+
     return session
 
 

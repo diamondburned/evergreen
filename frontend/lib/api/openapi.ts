@@ -34,8 +34,8 @@ export type UploadFileResponse = {
     alt?: string | null;
 };
 export type UserResponse = {
-    id: number;
-    email: string;
+    id: string;
+    email: string | null;
     avatar_hash: string | null;
     display_name: string | null;
 };
@@ -45,16 +45,16 @@ export type UpdateUserRequest = {
     avatar_hash?: string | null;
     display_name?: string | null;
 };
-export type LoginRequest = {
+export type Session = {
+    token?: string;
+    user_id: string | null;
+    expires_at?: string;
+};
+export type RegisterSessionRequest = {
     email: string;
     password: string;
 };
-export type Session = {
-    token: string;
-    user_id: number | null;
-    expires_at?: string;
-};
-export type RegisterRequest = {
+export type LoginSessionRequest = {
     email: string;
     password: string;
 };
@@ -130,9 +130,37 @@ export function updateSelf(updateUserRequest: UpdateUserRequest, opts?: Oazapfts
     })));
 }
 /**
+ * Create Session
+ */
+export function createSession(opts?: Oazapfts.RequestOpts) {
+    return oazapfts.ok(oazapfts.fetchJson<{
+        status: 200;
+        data: Session;
+    }>("/api/sessions", {
+        ...opts,
+        method: "POST"
+    }));
+}
+/**
+ * Register Session
+ */
+export function registerSession(registerSessionRequest: RegisterSessionRequest, opts?: Oazapfts.RequestOpts) {
+    return oazapfts.ok(oazapfts.fetchJson<{
+        status: 200;
+        data: any;
+    } | {
+        status: 422;
+        data: HttpValidationError;
+    }>("/api/sessions/register", oazapfts.json({
+        ...opts,
+        method: "POST",
+        body: registerSessionRequest
+    })));
+}
+/**
  * Login
  */
-export function login(loginRequest: LoginRequest, opts?: Oazapfts.RequestOpts) {
+export function login(loginSessionRequest: LoginSessionRequest, opts?: Oazapfts.RequestOpts) {
     return oazapfts.ok(oazapfts.fetchJson<{
         status: 200;
         data: Session;
@@ -142,22 +170,6 @@ export function login(loginRequest: LoginRequest, opts?: Oazapfts.RequestOpts) {
     }>("/api/login", oazapfts.json({
         ...opts,
         method: "POST",
-        body: loginRequest
-    })));
-}
-/**
- * Register
- */
-export function register(registerRequest: RegisterRequest, opts?: Oazapfts.RequestOpts) {
-    return oazapfts.ok(oazapfts.fetchJson<{
-        status: 200;
-        data: Session;
-    } | {
-        status: 422;
-        data: HttpValidationError;
-    }>("/api/register", oazapfts.json({
-        ...opts,
-        method: "POST",
-        body: registerRequest
+        body: loginSessionRequest
     })));
 }

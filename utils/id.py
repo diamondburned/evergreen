@@ -1,12 +1,16 @@
-from sonyflake import SonyFlake
+import uuid
+import secrets
 
 
-_idGenerator = SonyFlake()
-assert _idGenerator is not None
-
-
-def generate_id() -> int:
+def generate_uuid() -> str:
     """
-    This function generates a unique Snowflake ID.
+    This function generates a random UUID.
     """
-    return _idGenerator.next_id()
+    return str(uuid.uuid4())
+
+
+def generate_token() -> str:
+    """
+    This function generates a random token.
+    """
+    return secrets.token_urlsafe(32)

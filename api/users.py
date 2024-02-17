@@ -1,4 +1,4 @@
-from fastapi import Depends, APIRouter
+from fastapi import Depends, APIRouter, HTTPException
 from pydantic import BaseModel
 from api.assets import assert_asset_hash
 from api.sessions import authorize, hash_password
@@ -10,8 +10,8 @@ router = APIRouter(tags=["users"])
 
 
 class UserResponse(BaseModel):
-    id: int
-    email: str
+    id: str
+    email: str | None
     avatar_hash: str | None
     display_name: str | None
 
@@ -25,7 +25,12 @@ async def get_self(
     This function returns the currently authenticated user.
     """
     user = await db.get_one(User, user_id)
-    return UserResponse(**user.model_dump())
+    return UserResponse(
+        id=user.id,
+        email=user.email,
+        avatar_hash=user.avatar_hash,
+        display_name=user.display_name,
+    )
 
 
 class UpdateUserRequest(BaseModel):
@@ -45,6 +50,9 @@ async def update_self(
     This function updates the currently authenticated user.
     """
     user = await db.get_one(User, user_id)
+    if user.is_anonymous():
+        raise HTTPException(status_code=400, detail="User has not registered yet")
+
     req_dict = req.model_dump(exclude_unset=True)  # for null checking
 
     if req.email is not None:
