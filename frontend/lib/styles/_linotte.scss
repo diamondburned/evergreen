@@ -2,7 +2,7 @@
   font-family: "Linotte";
   src:
     local("Linotte-Bold"),
-    url("assets/fonts/Linotte Bold.otf") format("opentype");
+    url("/fonts/Linotte Bold.otf") format("opentype");
   font-weight: bold;
 }
 
@@ -10,7 +10,7 @@
   font-family: "Linotte";
   src:
     local("Linotte-Regular"),
-    url("assets/fonts/Linotte Regular.otf") format("opentype");
+    url("/fonts/Linotte Regular.otf") format("opentype");
   font-weight: normal;
 }
 
@@ -18,6 +18,6 @@
   font-family: "Linotte";
   src:
     local("Linotte-SemiBold"),
-    url("assets/fonts/Linotte Semi Bold.otf") format("opentype");
+    url("/fonts/Linotte Semi Bold.otf") format("opentype");
   font-weight: 600;
 }
