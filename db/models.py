@@ -1,7 +1,8 @@
-from typing import Optional
-from sqlmodel import SQLModel, Column, JSON
+import enum
+from typing import Annotated, Optional
+from sqlmodel import BLOB, SQLModel, Column, JSON
 from sqlmodel import Field  # type: ignore
-from datetime import datetime
+from datetime import datetime, timedelta
 from utils.id import generate_uuid, generate_token
 from ai.models import *
 
@@ -24,6 +25,25 @@ class User(SQLModel, table=True):
         and password for later login.
         """
         return self.email is None
+
+
+class ScoreSubmission(SQLModel, table=True):
+    class GameInfo(BaseModel):
+        class GameDifficulty(enum.Enum):
+            BEGINNER = "beginner"
+            INTERMEDIATE = "intermediate"
+            ADVANCED = "advanced"
+
+        category: str
+        difficulty: "GameDifficulty"
+
+    id: int | None = Field(default=None, primary_key=True)
+    game: GameInfo = Field(sa_column=Column(JSON))
+    user_id: str = Field(foreign_key="user.id", index=True)
+    score: float = Field(default=0)
+    time_taken: Annotated[float, "Time taken in seconds."] = Field()
+    revealed_answer: bool = Field()
+    submitted_at: datetime = Field(default_factory=datetime.utcnow)
 
 
 class Session(SQLModel, table=True):
