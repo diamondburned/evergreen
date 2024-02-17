@@ -3,7 +3,7 @@
   import "$lib/styles/material-css/theme.css";
   import "$lib/styles/main.scss";
 </script>
-
+  
 <svelte:head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
