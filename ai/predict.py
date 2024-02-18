@@ -27,25 +27,21 @@ class GameStats(BaseModel):
 
 
 # Mock beginner prob-stats, data structures user logs
-user_game2 = {
-    "probability-statistics": GameStats(
-        score=8.0,
-        avgscore=8.0,
-        currlevel=GameDifficulty.BEGINNER,
-        timespent=8,
-        revealanswer=0,
-    ),
-}
+user_game2 = GameStats(
+    score=8.0,
+    avgscore=8.0,
+    currlevel=GameDifficulty.BEGINNER,
+    timespent=8,
+    revealanswer=0,
+)
 
-user_game3 = {
-    "data-structures": GameStats(
-        score=4.0,
-        avgscore=4.0,
-        currlevel=GameDifficulty.BEGINNER,
-        timespent=2,
-        revealanswer=1,
-    ),
-}
+user_game3 = GameStats(
+    score=4.0,
+    avgscore=4.0,
+    currlevel=GameDifficulty.BEGINNER,
+    timespent=2,
+    revealanswer=1,
+)
 
 
 class Predictor:
@@ -59,8 +55,8 @@ class Predictor:
     def __init__(self, modelPath="ai/model/random_forest.pkl"):
         self.model = pickle.load(open(modelPath, "rb"))
 
-    def predict(self, stats: dict[str, GameStats]) -> GameDifficulty:
-        df = pd.DataFrame({k: v.model_dump() for k, v in stats.items()})
+    def predict(self, stats: GameStats) -> GameDifficulty:
+        df = pd.DataFrame({"game": stats.model_dump()})
         df = df.transpose()
         df.reset_index(inplace=True)
         df.rename(columns={"index": "user_id"}, inplace=True)

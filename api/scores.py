@@ -7,6 +7,7 @@ from api.sessions import authorize
 from db import Database
 from db.models import GameDifficulty, ScoreSubmission
 import db
+import ai.predict
 
 router = APIRouter(tags=["scores"])
 
@@ -40,46 +41,6 @@ async def list_scores(
     )
     scores = scores_query.all()
     return scores
-
-
-# class AverageScoreResponse(BaseModel):
-#     average_score: float
-#     total_scores: int
-
-
-# @router.get("/scores/average")
-# async def average_score(
-#     game_category: Optional[str] = None,
-#     game_difficulty: Optional[GameDifficulty] = None,
-#     db: Database = Depends(db.use),
-#     user_id: str = Depends(authorize),
-# ) -> AverageScoreResponse:
-#     """
-#     Get the average score for a game.
-#     """
-#     # TODO: figure out why SQLModel is scared of
-#     # func.sum(ScoreSubmission.score).
-#     all_scores_query = await db.exec(
-#         select(ScoreSubmission.score).where(
-#             ScoreSubmission.user_id == user_id
-#             and (
-#                 game_category is None or ScoreSubmission.game_category == game_category
-#             )
-#             and (
-#                 game_difficulty is None
-#                 or ScoreSubmission.game_difficulty == game_difficulty
-#             )
-#         )
-#     )
-#     all_scores = all_scores_query.all()
-#     average_score = 0
-#     if len(all_scores) > 0:
-#         sum_scores = sum(all_scores)
-#         average_score = sum_scores / len(all_scores)
-#     return AverageScoreResponse(
-#         total_scores=len(all_scores),
-#         average_score=average_score,
-#     )
 
 
 class SubmitScoreRequest(BaseModel):
@@ -131,3 +92,35 @@ async def submit_score(
         time_taken=score.time_taken,
         submitted_at=score.submitted_at,
     )
+
+
+recommendationPredictor = ai.predict.Predictor()
+
+
+@router.get("/scores/recommend")
+async def recommend_difficulty(
+    game_category: str,
+    db: Database = Depends(db.use),
+    user_id: str = Depends(authorize),
+) -> GameDifficulty:
+    last_game_query = await db.exec(
+        select(ScoreSubmission)
+        .where(
+            ScoreSubmission.user_id == user_id
+            and ScoreSubmission.game_category == game_category
+        )
+        .order_by(col(ScoreSubmission.id).desc())
+        .limit(1)
+    )
+    last_game = last_game_query.first()
+    if last_game is None:
+        return GameDifficulty.BEGINNER
+
+    stats = ai.predict.GameStats(
+        score=last_game.average_score,
+        avgscore=last_game.average_score,
+        currlevel=last_game.game_difficulty,
+        timespent=round(last_game.time_taken),
+        revealanswer=len(list(filter(lambda r: r.revealed_answer, last_game.rounds))),
+    )
+    return recommendationPredictor.predict(stats)
