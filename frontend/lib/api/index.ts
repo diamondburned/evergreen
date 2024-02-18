@@ -14,4 +14,4 @@ token.subscribe((value) => {
 });
 
 export const isAuthorized = derived(token, (token) => token != null);
-export const isLoggedIn = readable<boolean>(false);
+export const isLoggedIn = persisted<boolean>("logged-in", false);

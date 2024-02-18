@@ -1,6 +1,6 @@
 <script lang="ts">
   import RegistrationPage from "$lib/components/RegistrationPage.svelte";
-  import { login, token } from "$lib/api";
+  import { isLoggedIn, login, token } from "$lib/api";
   import { goto } from "$app/navigation";
 
   let email = "";
@@ -8,8 +8,8 @@
 
   async function submit() {
     const session = await login({ email, password });
-    console.log(session);
     $token = session.token;
+    $isLoggedIn = true;
     goto("/");
   }
 </script>

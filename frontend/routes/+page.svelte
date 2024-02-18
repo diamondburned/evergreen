@@ -25,7 +25,7 @@
         <div in:fly={{ y: 30, duration: 500, delay: 500 }}>
           <button class="floaty inverted">Play</button>
           <p class="alt-action">
-            {#if isLoggedIn}
+            {#if $isLoggedIn}
               You are logged in. <a href="/dashboard">Go to Dashboard</a>
             {:else}
               Already played? <a href="/login">Sign in</a>
