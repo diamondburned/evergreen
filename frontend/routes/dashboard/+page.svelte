@@ -22,19 +22,19 @@
 
     <div class="stats-cards">
       <article>
-        <header>
+        <hgroup>
           <h3>Streaks</h3>
-          <p>Streaks are a measure of how many days in a row you have completed your daily goal.</p>
-        </header>
+          <p>Measure of how many days in a row you have completed your daily goal.</p>
+        </hgroup>
 
         <p>Current Streak: 0</p>
       </article>
 
       <article>
-        <header>
-          <h3>Daily Average</h3>
-          <p>How many days you have completed your daily goal on average.</p>
-        </header>
+        <hgroup>
+          <h3>Average Times</h3>
+          <p>Measure of how long on average you took to solve a problem over time.</p>
+        </hgroup>
 
         <p>Daily Average: 0</p>
       </article>
@@ -46,7 +46,8 @@
   section {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    margin: 1rem auto;
+    width: 100%;
   }
 
   section.container {
@@ -54,9 +55,9 @@
   }
 
   .stats-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1rem;
     width: 100%;
 
     article {
@@ -68,8 +69,12 @@
         margin: 0.5rem 0;
       }
 
-      header {
+      hgroup {
         border-bottom: 1px solid rgba(var(--primary-rgb), 0.25);
+        p {
+          margin-top: 0;
+          font-size: 0.9rem;
+        }
       }
     }
   }

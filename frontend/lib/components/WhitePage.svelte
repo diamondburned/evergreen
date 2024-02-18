@@ -9,8 +9,8 @@
 
 <div class="white-page">
   <slot name="header">
-    <header class="container" class:scrolled>
-      <NavBar />
+    <header class:scrolled>
+      <NavBar container />
     </header>
   </slot>
 

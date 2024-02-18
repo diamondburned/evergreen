@@ -11,9 +11,11 @@
       label: "Settings",
     },
   ];
+
+  export let container = false;
 </script>
 
-<nav>
+<nav class:container>
   <ul>
     <li>
       <a class="primary-text brand" href="/">
