@@ -199,7 +199,9 @@ export function login(loginSessionRequest: LoginSessionRequest, opts?: Oazapfts.
 /**
  * List Scores
  */
-export function listScores(gameCategory: string, gameDifficulty: GameDifficulty, { fromTime, toTime }: {
+export function listScores({ gameCategory, gameDifficulty, fromTime, toTime }: {
+    gameCategory?: string | null;
+    gameDifficulty?: GameDifficulty | null;
     fromTime?: string | null;
     toTime?: string | null;
 } = {}, opts?: Oazapfts.RequestOpts) {
@@ -237,7 +239,10 @@ export function submitScore(submitScoreRequest: SubmitScoreRequest, opts?: Oazap
 /**
  * Average Score
  */
-export function averageScore(gameCategory: string, gameDifficulty: GameDifficulty, opts?: Oazapfts.RequestOpts) {
+export function averageScore({ gameCategory, gameDifficulty }: {
+    gameCategory?: string | null;
+    gameDifficulty?: GameDifficulty | null;
+} = {}, opts?: Oazapfts.RequestOpts) {
     return oazapfts.ok(oazapfts.fetchJson<{
         status: 200;
         data: AverageScoreResponse;

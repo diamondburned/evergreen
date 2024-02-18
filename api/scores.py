@@ -13,8 +13,8 @@ router = APIRouter(tags=["scores"])
 
 @router.get("/scores")
 async def list_scores(
-    game_category: str,
-    game_difficulty: GameDifficulty,
+    game_category: Optional[str] = None,
+    game_difficulty: Optional[GameDifficulty] = None,
     db: Database = Depends(db.use),
     user_id: str = Depends(authorize),
     from_time: Annotated[
@@ -26,8 +26,13 @@ async def list_scores(
         select(ScoreSubmission)
         .where(
             ScoreSubmission.user_id == user_id
-            and ScoreSubmission.game_category == game_category
-            and ScoreSubmission.game_difficulty == game_difficulty
+            and (
+                game_category is None or ScoreSubmission.game_category == game_category
+            )
+            and (
+                game_difficulty is None
+                or ScoreSubmission.game_difficulty == game_difficulty
+            )
             and (from_time is None or ScoreSubmission.submitted_at >= from_time)
             and (to_time is None or ScoreSubmission.submitted_at <= to_time)
         )
@@ -44,8 +49,8 @@ class AverageScoreResponse(BaseModel):
 
 @router.get("/scores/average")
 async def average_score(
-    game_category: str,
-    game_difficulty: GameDifficulty,
+    game_category: Optional[str] = None,
+    game_difficulty: Optional[GameDifficulty] = None,
     db: Database = Depends(db.use),
     user_id: str = Depends(authorize),
 ) -> AverageScoreResponse:
@@ -57,8 +62,13 @@ async def average_score(
     all_scores_query = await db.exec(
         select(ScoreSubmission.score).where(
             ScoreSubmission.user_id == user_id
-            and ScoreSubmission.game_category == game_category
-            and ScoreSubmission.game_difficulty == game_difficulty
+            and (
+                game_category is None or ScoreSubmission.game_category == game_category
+            )
+            and (
+                game_difficulty is None
+                or ScoreSubmission.game_difficulty == game_difficulty
+            )
         )
     )
     all_scores = all_scores_query.all()

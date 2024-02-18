@@ -3,8 +3,47 @@
   import Roadmap from "$lib/components/roadmap/Roadmap.svelte";
   import categories_ from "$lib/categories.json";
   import { type Categories } from "$lib/components/roadmap/Roadmap.svelte";
+  import { listScores, type ScoreSubmission } from "$lib/api";
+  import { onMount } from "svelte";
 
   $: categories = categories_ as unknown as Categories; // fix typescript error
+
+  function startOfWeek(date: Date) {
+    const diff = date.getDate() - date.getDay();
+    return new Date(date.setDate(diff));
+  }
+
+  function endOfWeek(date: Date) {
+    const diff = date.getDate() - date.getDay() + 6;
+    return new Date(date.setDate(diff));
+  }
+
+  let pastWeekScores: ScoreSubmission[][] = []; // today last
+  $: console.log(pastWeekScores);
+
+  onMount(async () => {
+    const now = new Date();
+    const scores = await listScores({
+      fromTime: startOfWeek(now).toISOString(),
+      toTime: endOfWeek(now).toISOString(),
+    });
+
+    pastWeekScores = new Array(7)
+      .fill([])
+      .map((_, i) => {
+        const day = new Date(now);
+        day.setDate(day.getDate() - i + 1);
+        return scores.filter((score) => {
+          const scoreDate = new Date(Date.parse(score.submitted_at!));
+          return (
+            scoreDate.getDate() === day.getDate() &&
+            scoreDate.getMonth() === day.getMonth() &&
+            scoreDate.getFullYear() === day.getFullYear()
+          );
+        });
+      })
+      .reverse();
+  });
 </script>
 
 <svelte:head>
