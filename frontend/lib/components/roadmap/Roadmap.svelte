@@ -1,21 +1,23 @@
-<script lang="ts">
-  import { cubicOut, cubicIn } from "svelte/easing";
-  import { fly } from "svelte/transition";
-  import SVG from "$lib/components/roadmap/SVG.svelte";
-  import RoadmapButton from "$lib/components/roadmap/RoadmapButton.svelte";
-
-  type CategoryLevel = {
+<script lang="ts" context="module">
+  export type CategoryLevel = {
     label: string;
     description: string;
   };
 
-  type Categories = Record<
+  export type Categories = Record<
     string,
     {
       label: string;
       levels: [CategoryLevel, CategoryLevel, CategoryLevel];
     }
   >;
+</script>
+
+<script lang="ts">
+  import { cubicOut, cubicIn } from "svelte/easing";
+  import { fly } from "svelte/transition";
+  import SVG from "$lib/components/roadmap/SVG.svelte";
+  import RoadmapButton from "$lib/components/roadmap/RoadmapButton.svelte";
 
   export let categories: Categories = {};
   export let currentCategory = Object.keys(categories)[0]!;

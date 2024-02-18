@@ -4,7 +4,7 @@
   import categories_ from "$lib/categories.json";
   import { type Categories } from "$lib/components/roadmap/Roadmap.svelte";
 
-  $: categories = categories_ as unknown as Categories; // fix typescript error
+  $: categories = categories_ as Categories; // fix typescript error
 </script>
 
 <svelte:head>
