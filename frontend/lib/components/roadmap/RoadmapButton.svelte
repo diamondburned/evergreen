@@ -17,7 +17,6 @@
     const rect = nodeElement.getBoundingClientRect();
     const anchorX = rect.x + rect.width / 2;
     const anchorY = rect.y + rect.height / 2;
-    console.log(rect, anchorX, anchorY);
 
     tooltipElement.style.setProperty("--anchor-x", `${anchorX}px`);
     tooltipElement.style.setProperty("--anchor-y", `${anchorY}px`);
