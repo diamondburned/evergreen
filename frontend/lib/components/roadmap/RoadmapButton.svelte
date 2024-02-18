@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { afterUpdate, onDestroy, onMount, tick } from "svelte";
+  import { onDestroy, onMount } from "svelte";
 
   export let label: string;
   export let description: string;
@@ -14,7 +14,6 @@
   let nodeElement: HTMLElement;
   let scrollY: number;
 
-  let destroyed = false;
   function update() {
     const rect = nodeElement.getBoundingClientRect();
     const anchorX = rect.x + rect.width / 2;
@@ -29,12 +28,9 @@
 
     tooltipElement.style.setProperty("--top", `${top}px`);
     tooltipElement.style.setProperty("--left", `${left}px`);
-
-    if (!destroyed) {
-      // hack lmao
-      requestAnimationFrame(update);
-    }
   }
+
+  let interval: number;
 
   onMount(() => {
     tooltipElement = document.createElement("p");
@@ -42,10 +38,12 @@
     tooltipElement.textContent = description;
 
     document.body.appendChild(tooltipElement);
+    interval = window.setInterval(() => update(), 1000);
     update();
   });
 
   onDestroy(() => {
+    clearInterval(interval as number);
     document.body.removeChild(tooltipElement);
   });
 </script>
@@ -57,7 +55,6 @@
   class:flip
   class:recommended
   data-slot={slot}
-  data-description={description}
   bind:this={nodeElement}
   on:mouseenter={() => tooltipElement.classList.add("visible")}
   on:mouseleave={() => tooltipElement.classList.remove("visible")}
@@ -103,9 +100,11 @@
       transform: rotateY(180deg);
     }
 
-    &.recommended {
-      background-color: var(--primary);
-      color: var(--background);
+    &.recommended::after {
+      content: "⭐";
+      position: absolute;
+      right: -2rem;
+      text-shadow: 0 0 10px gold;
     }
   }
 
