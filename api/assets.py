@@ -30,7 +30,6 @@ router = APIRouter(tags=["assets"])
 async def get_asset(
     asset_hash: str,
     db: Database = Depends(db.use),
-    _: int = Depends(authorize),
 ) -> StreamingResponse:
     """
     This function returns an asset by hash.
@@ -53,7 +52,6 @@ class GetAssetMetadataResponse(BaseModel):
 async def get_asset_metadata(
     asset_hash: str,
     db: Database = Depends(db.use),
-    _: int = Depends(authorize),
 ) -> GetAssetMetadataResponse:
     """
     This function returns metadata for an asset by hash.
