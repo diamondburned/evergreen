@@ -34,16 +34,18 @@
   $: levels = categories[currentCategory]!.levels;
 
   let predictions: Record<keyof Categories, GameDifficulty> = {};
-  async function prediction(category: keyof Categories): Promise<GameDifficulty> {
+  async function loadPrediction(category: keyof Categories) {
     if (predictions[category] == undefined) {
-      predictions[category] = await recommendDifficulty(category);
-      predictions = { ...predictions }; // force reactivity
-      console.log(predictions);
+      try {
+        predictions[category] = await recommendDifficulty(category);
+        predictions = { ...predictions }; // force reactivity
+      } catch (err) {
+        console.error(err);
+      }
     }
-    return predictions[category]!;
   }
 
-  $: prediction(currentCategory);
+  $: loadPrediction(currentCategory);
   $: currentPrediction = predictions[currentCategory];
   $: currentPredictionReady = currentPrediction != undefined;
 </script>
