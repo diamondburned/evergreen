@@ -2,6 +2,7 @@
   import RegistrationPage from "$lib/components/RegistrationPage.svelte";
   import { isLoggedIn, login, token } from "$lib/api";
   import { goto } from "$app/navigation";
+  import { onMount } from "svelte";
 
   let email = "";
   let password = "";
@@ -12,6 +13,12 @@
     $isLoggedIn = true;
     goto("/");
   }
+
+  onMount(() => {
+    if ($isLoggedIn) {
+      goto("/");
+    }
+  });
 </script>
 
 <svelte:head>

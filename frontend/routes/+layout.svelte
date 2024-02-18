@@ -4,9 +4,11 @@
   import "$lib/styles/main.scss";
 
   import { onMount } from "svelte";
-  import { fly } from "svelte/transition";
+  import { fly, fade } from "svelte/transition";
   import { cubicIn, cubicOut } from "svelte/easing";
   import { token, createSession } from "$lib/api";
+  import { afterNavigate, beforeNavigate } from "$app/navigation";
+  import LoadingDots from "$lib/components/LoadingDots.svelte";
 
   export let data;
 
@@ -18,6 +20,19 @@
   const transitionOut = { easing: cubicIn, y: -y, duration };
 
   let screenHeight = 0;
+  let loading = true;
+
+  beforeNavigate(({ to }) => {
+    if (to && to.route.id) {
+      console.log("loading");
+      loading = true;
+    }
+  });
+
+  afterNavigate(() => {
+    console.log("not loading");
+    loading = false;
+  });
 
   onMount(async () => {
     if (!$token) {
@@ -40,6 +55,12 @@
 </svelte:head>
 
 <div class="background">
+  {#if loading}
+    <div class="loading-overlay" in:fly={transitionIn} out:fly={transitionOut}>
+      <LoadingDots padded />
+    </div>
+  {/if}
+
   {#key data.pathname}
     <div
       class="content"
@@ -53,13 +74,24 @@
 </div>
 
 <style lang="scss">
-  div.background {
+  div.background,
+  div.loading-overlay {
     background-color: var(--background);
     background-image: var(--background-gradient);
   }
+
+  div.loading-overlay,
   div.background,
   div.content {
     width: 100%;
     height: var(--screen-height, 100%);
+  }
+
+  div.loading-overlay {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
   }
 </style>

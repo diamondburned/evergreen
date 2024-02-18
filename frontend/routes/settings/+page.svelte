@@ -10,6 +10,7 @@
     type UserResponse,
     type UpdateUserRequest,
   } from "$lib/api";
+  import LoadingDots from "$lib/components/LoadingDots.svelte";
 
   let self: UserResponse;
   $: isAnonymous = !self || self.email === null;
@@ -91,16 +92,17 @@
   <section class="container">
     <h2>Settings</h2>
 
-    <form class="settings">
-      {#if !self}
-        <p class="loading">Loading...</p>
-      {:else if isAnonymous}
-        <h3>Warning</h3>
-        <p>You are currently an anonymous user. You can create an account to save your settings.</p>
-        <p>
-          To create an account, head to the <a href="/register">signup page</a>.
-        </p>
-      {:else if self}
+    {#if !self}
+      <LoadingDots padded />
+    {:else if isAnonymous}
+      <p>
+        <b>Warning:</b> You are currently an anonymous user. You can create an account to save your settings.
+      </p>
+      <p>
+        To create an account, head to the <a href="/register">signup page</a>.
+      </p>
+    {:else if self}
+      <form class="settings">
         <ErrorMessage bind:error />
 
         <formset class="avatar">
@@ -206,8 +208,8 @@
             </button>
           </div>
         </formset>
-      {/if}
-    </form>
+      </form>
+    {/if}
   </section>
 </WhitePage>
 

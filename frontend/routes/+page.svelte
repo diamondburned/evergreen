@@ -19,7 +19,7 @@
     <div class="bottom">
       {#if !$isAuthorized}
         <div out:fly={{ y: -30, duration: 500 }}>
-          <LoadingDots dotSize={24} distance={32} />
+          <LoadingDots padded dotSize={24} distance={32} />
         </div>
       {:else}
         <div in:fly={{ y: 30, duration: 500, delay: 500 }}>
@@ -28,7 +28,8 @@
             {#if $isLoggedIn}
               You are logged in. <a href="/dashboard">Go to Dashboard</a>
             {:else}
-              Already played? <a href="/login">Sign in</a>
+              Already played? <a href="/login">Sign in</a> or
+              <a href="/dashboard">go to dashboard</a>
             {/if}
           </p>
         </div>
@@ -39,8 +40,7 @@
 
 <style lang="scss">
   .content,
-  .content > div,
-  .content > hgroup {
+  .content > * {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +84,7 @@
   }
 
   p.alt-action {
-    margin: 1rem;
+    margin: 1rem auto;
     text-align: center;
     font-weight: 400;
 
