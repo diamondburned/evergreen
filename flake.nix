@@ -38,6 +38,7 @@
 						});
 					in
 						{
+							asyncio = fixPoetryPackage super.asyncio;
 							sonyflake-py = fixPoetryPackage super.sonyflake-py;
 							sse-starlette = fixPoetryPackage super.sse-starlette;
 							sphinxcontrib-jquery = super.sphinxcontrib-jquery.overridePythonAttrs (old: {
