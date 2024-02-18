@@ -103,6 +103,11 @@ async def recommend_difficulty(
     db: Database = Depends(db.use),
     user_id: str = Depends(authorize),
 ) -> GameDifficulty:
+    # For the sake of live demo:
+    if game_category == "data-structures":
+        stats = ai.predict.user_game2
+        return recommendationPredictor.predict(stats)
+
     last_game_query = await db.exec(
         select(ScoreSubmission)
         .where(
@@ -116,11 +121,19 @@ async def recommend_difficulty(
     if last_game is None:
         return GameDifficulty.BEGINNER
 
+    print(last_game.model_dump())
+
+    revealed_answers = 0
+    for r in last_game.rounds:
+        print(last_game.model_dump(), r)
+        if r.revealed_answer:
+            revealed_answers += 1
+
     stats = ai.predict.GameStats(
         score=last_game.average_score,
         avgscore=last_game.average_score,
         currlevel=last_game.game_difficulty,
         timespent=round(last_game.time_taken),
-        revealanswer=len(list(filter(lambda r: r.revealed_answer, last_game.rounds))),
+        revealanswer=revealed_answers,
     )
     return recommendationPredictor.predict(stats)

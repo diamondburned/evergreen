@@ -5,6 +5,7 @@
   export let description: string;
   export let slot: number;
   export let flip: boolean = false;
+  export let recommended: boolean = false;
 
   // Deal with the consequences of our sin: by abusing an SVG for the roadmap.
   // Because HTML elements within a foreignObject use their own coordinate
@@ -54,6 +55,7 @@
 <p
   class="node"
   class:flip
+  class:recommended
   data-slot={slot}
   data-description={description}
   bind:this={nodeElement}
@@ -99,6 +101,11 @@
 
     &.flip {
       transform: rotateY(180deg);
+    }
+
+    &.recommended {
+      background-color: var(--primary);
+      color: var(--background);
     }
   }
 

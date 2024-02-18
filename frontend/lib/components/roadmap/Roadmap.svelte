@@ -18,6 +18,7 @@
   import { fly } from "svelte/transition";
   import SVG from "$lib/components/roadmap/SVG.svelte";
   import RoadmapButton from "$lib/components/roadmap/RoadmapButton.svelte";
+  import { GameDifficulty, recommendDifficulty } from "$lib/api";
 
   export let categories: Categories = {};
   export let currentCategory = Object.keys(categories)[0]!;
@@ -31,6 +32,20 @@
 
   $: flip = Object.keys(categories).indexOf(currentCategory) % 2 === 0;
   $: levels = categories[currentCategory]!.levels;
+
+  let predictions: Record<keyof Categories, GameDifficulty> = {};
+  async function prediction(category: keyof Categories): Promise<GameDifficulty> {
+    if (predictions[category] == undefined) {
+      predictions[category] = await recommendDifficulty(category);
+      predictions = { ...predictions }; // force reactivity
+      console.log(predictions);
+    }
+    return predictions[category]!;
+  }
+
+  $: prediction(currentCategory);
+  $: currentPrediction = predictions[currentCategory];
+  $: currentPredictionReady = currentPrediction != undefined;
 </script>
 
 <div class="roadmap">
@@ -52,29 +67,52 @@
 
   <div class="roadmap-container">
     {#key currentCategory}
-      <div class="roadmap-box" class:flip in:fly={transitionIn} out:fly={transitionOut}>
+      <div
+        class="roadmap-box"
+        class:flip
+        class:recommends-slot-1={currentPrediction == GameDifficulty.Intermediate}
+        class:recommends-slot-2={currentPrediction == GameDifficulty.Advanced}
+        class:loading-recommendation={!currentPredictionReady}
+        in:fly={transitionIn}
+        out:fly={transitionOut}
+      >
         <SVG>
-          <div class="contents" slot="1">
+          <div
+            class="contents"
+            class:recommended={currentPrediction == GameDifficulty.Beginner}
+            slot="1"
+          >
             <RoadmapButton
               slot={1}
               label={levels[0].label}
               description={levels[0].description}
+              recommended={currentPrediction == GameDifficulty.Beginner}
               {flip}
             />
           </div>
-          <div class="contents" slot="2">
+          <div
+            class="contents"
+            class:recommended={currentPrediction == GameDifficulty.Intermediate}
+            slot="2"
+          >
             <RoadmapButton
               slot={2}
               label={levels[1].label}
               description={levels[1].description}
+              recommended={currentPrediction == GameDifficulty.Intermediate}
               {flip}
             />
           </div>
-          <div class="contents" slot="3">
+          <div
+            class="contents"
+            class:recommended={currentPrediction == GameDifficulty.Advanced}
+            slot="3"
+          >
             <RoadmapButton
               slot={3}
               label={levels[2].label}
               description={levels[2].description}
+              recommended={currentPrediction == GameDifficulty.Advanced}
               {flip}
             />
           </div>
@@ -106,6 +144,42 @@
 
       &.flip {
         transform: rotateY(180deg);
+      }
+
+      :global(.slot-1-path),
+      :global(.slot-2-path) {
+        transition: all 0.15s ease-in-out;
+      }
+
+      &.loading-recommendation {
+        @keyframes breathing {
+          0% {
+            fill: rgba(var(--primary-rgb), 0.15);
+          }
+          50% {
+            fill: rgba(var(--primary-rgb), 0.35);
+          }
+        }
+
+        :global(.slot-1-path),
+        :global(.slot-2-path) {
+          animation: breathing 0.5s infinite alternate;
+        }
+      }
+
+      &:not(.loading-recommendation) {
+        :global(.slot-1-path),
+        :global(.slot-2-path) {
+          animation: none;
+          fill: rgba(var(--primary-rgb), 0.35);
+        }
+
+        &.recommends-slot-1 :global(.slot-1-path),
+        &.recommends-slot-2 :global(.slot-1-path),
+        &.recommends-slot-2 :global(.slot-2-path) {
+          fill: var(--primary);
+          filter: drop-shadow(0 0 5px rgba(var(--primary-rgb), 0.5));
+        }
       }
     }
   }

@@ -245,6 +245,22 @@ export function submitScore(submitScoreRequest: SubmitScoreRequest, opts?: Oazap
         body: submitScoreRequest
     })));
 }
+/**
+ * Recommend Difficulty
+ */
+export function recommendDifficulty(gameCategory: string, opts?: Oazapfts.RequestOpts) {
+    return oazapfts.ok(oazapfts.fetchJson<{
+        status: 200;
+        data: GameDifficulty;
+    } | {
+        status: 422;
+        data: HttpValidationError;
+    }>(`/api/scores/recommend${QS.query(QS.explode({
+        game_category: gameCategory
+    }))}`, {
+        ...opts
+    }));
+}
 export enum GameDifficulty {
     Beginner = "beginner",
     Intermediate = "intermediate",
