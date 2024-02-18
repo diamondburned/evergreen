@@ -35,6 +35,7 @@
   });
 
   onMount(async () => {
+    loading = false;
     if (!$token) {
       const session = await createSession();
       $token = session.token;
