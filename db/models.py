@@ -33,13 +33,19 @@ class GameDifficulty(enum.Enum):
 
 
 class ScoreSubmission(SQLModel, table=True):
+    class RoundInfo(BaseModel):
+        score: float
+        revealed_answer: bool
+
     id: int | None = Field(default=None, primary_key=True)
     game_category: str = Field()
     game_difficulty: GameDifficulty = Field()
     user_id: str = Field(foreign_key="user.id", index=True)
-    score: float = Field(default=0)
-    time_taken: Annotated[float, "Time taken in seconds."] = Field()
-    revealed_answer: bool = Field()
+    rounds: Annotated[list[RoundInfo], "All the scores for each turn of the game"] = (
+        Field(sa_column=Column(JSON))
+    )
+    average_score: Annotated[float, "The average score of all the turns"] = Field()
+    time_taken: Annotated[float, "Time taken for the game in seconds."] = Field()
     submitted_at: datetime = Field(default_factory=datetime.utcnow)
 
 

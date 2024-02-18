@@ -42,50 +42,51 @@ async def list_scores(
     return scores
 
 
-class AverageScoreResponse(BaseModel):
-    average_score: float
-    total_scores: int
+# class AverageScoreResponse(BaseModel):
+#     average_score: float
+#     total_scores: int
 
 
-@router.get("/scores/average")
-async def average_score(
-    game_category: Optional[str] = None,
-    game_difficulty: Optional[GameDifficulty] = None,
-    db: Database = Depends(db.use),
-    user_id: str = Depends(authorize),
-) -> AverageScoreResponse:
-    """
-    Get the average score for a game.
-    """
-    # TODO: figure out why SQLModel is scared of
-    # func.sum(ScoreSubmission.score).
-    all_scores_query = await db.exec(
-        select(ScoreSubmission.score).where(
-            ScoreSubmission.user_id == user_id
-            and (
-                game_category is None or ScoreSubmission.game_category == game_category
-            )
-            and (
-                game_difficulty is None
-                or ScoreSubmission.game_difficulty == game_difficulty
-            )
-        )
-    )
-    all_scores = all_scores_query.all()
-    average_score = 0
-    if len(all_scores) > 0:
-        sum_scores = sum(all_scores)
-        average_score = sum_scores / len(all_scores)
-    return AverageScoreResponse(
-        total_scores=len(all_scores),
-        average_score=average_score,
-    )
+# @router.get("/scores/average")
+# async def average_score(
+#     game_category: Optional[str] = None,
+#     game_difficulty: Optional[GameDifficulty] = None,
+#     db: Database = Depends(db.use),
+#     user_id: str = Depends(authorize),
+# ) -> AverageScoreResponse:
+#     """
+#     Get the average score for a game.
+#     """
+#     # TODO: figure out why SQLModel is scared of
+#     # func.sum(ScoreSubmission.score).
+#     all_scores_query = await db.exec(
+#         select(ScoreSubmission.score).where(
+#             ScoreSubmission.user_id == user_id
+#             and (
+#                 game_category is None or ScoreSubmission.game_category == game_category
+#             )
+#             and (
+#                 game_difficulty is None
+#                 or ScoreSubmission.game_difficulty == game_difficulty
+#             )
+#         )
+#     )
+#     all_scores = all_scores_query.all()
+#     average_score = 0
+#     if len(all_scores) > 0:
+#         sum_scores = sum(all_scores)
+#         average_score = sum_scores / len(all_scores)
+#     return AverageScoreResponse(
+#         total_scores=len(all_scores),
+#         average_score=average_score,
+#     )
 
 
 class SubmitScoreRequest(BaseModel):
     game_category: str
     game_difficulty: GameDifficulty
-    score: float
+    rounds: list[ScoreSubmission.RoundInfo]
+    average_score: float
     time_taken: Annotated[float, "Time taken in seconds."]
     revealed_answer: bool
 
@@ -101,9 +102,9 @@ async def submit_score(
             game_category=req.game_category,
             game_difficulty=req.game_difficulty,
             user_id=user_id,
-            score=req.score,
+            rounds=req.rounds,
+            average_score=req.average_score,
             time_taken=req.time_taken,
-            revealed_answer=req.revealed_answer,
         )
         db.add(score)
     await db.refresh(score)
