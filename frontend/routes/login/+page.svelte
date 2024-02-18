@@ -27,4 +27,5 @@
     Password
     <input type="password" bind:value={password} />
   </label>
+  <a slot="bottom" role="button" href="/register">Sign up</a>
 </RegistrationPage>

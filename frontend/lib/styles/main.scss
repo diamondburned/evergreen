@@ -114,6 +114,9 @@ a[role="button"].floaty {
 button,
 a[role="button"] {
   border: 1px solid var(--primary);
+  border-radius: 15px;
+  background-color: var(--background);
+  color: var(--primary);
 
   &[disabled] {
     opacity: 0.5;

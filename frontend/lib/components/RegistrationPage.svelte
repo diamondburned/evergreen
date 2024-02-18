@@ -39,6 +39,7 @@
       >
         {submitLabel}
       </button>
+      <slot name="bottom" />
     </form>
   </main>
 </Hero>
@@ -90,10 +91,12 @@
       }
     }
 
-    button {
+    :global(button),
+    :global(a[role="button"]) {
       width: fit-content;
       margin: auto;
       padding: 0.5em 2em;
+      min-width: 8rem;
 
       border-radius: 15px;
       transition: all 0.15s linear;
