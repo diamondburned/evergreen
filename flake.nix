@@ -21,12 +21,12 @@
 				pkgs = nixpkgs.legacyPackages.${system};
 				inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; })
 					mkPoetryApplication
-					defaultPoetryOverrides;
+					overrides;
 			in
 			{
 				packages.default = mkPoetryApplication {
 					projectDir = self;
-					overrides = defaultPoetryOverrides.extend (self: super: let
+					overrides = overrides.withDefaults (self: super: let
 						fixPoetryPackage = pkg: pkg.overridePythonAttrs (old: {
 							buildInputs = (old.buildInputs or [ ]) ++ (with super; [
 								setuptools
@@ -36,6 +36,7 @@
 								truststore
 							]);
 						});
+						useWheel = pkg: pkg.override { preferWheel = true; };
 					in
 						{
 							asyncio = fixPoetryPackage super.asyncio;
@@ -46,6 +47,10 @@
 									sphinx
 								]);
 							});
+							numpy = useWheel super.numpy;
+							scipy = useWheel super.scipy;
+							pandas = useWheel super.pandas;
+							scikit-learn = useWheel super.scikit-learn;
 						}
 					);
 				};
