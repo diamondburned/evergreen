@@ -60,6 +60,27 @@ export type LoginSessionRequest = {
     email: string;
     password: string;
 };
+export type ScoreSubmission = {
+    id?: number | null;
+    game_category: string;
+    game_difficulty: GameDifficulty;
+    user_id: string;
+    score?: number;
+    time_taken: number;
+    revealed_answer: boolean;
+    submitted_at?: string;
+};
+export type SubmitScoreRequest = {
+    game_category: string;
+    game_difficulty: GameDifficulty;
+    score: number;
+    time_taken: number;
+    revealed_answer: boolean;
+};
+export type AverageScoreResponse = {
+    average_score: number;
+    total_scores: number;
+};
 /**
  * Get Asset
  */
@@ -174,4 +195,62 @@ export function login(loginSessionRequest: LoginSessionRequest, opts?: Oazapfts.
         method: "POST",
         body: loginSessionRequest
     })));
+}
+/**
+ * List Scores
+ */
+export function listScores(gameCategory: string, gameDifficulty: GameDifficulty, { before }: {
+    before?: number | null;
+} = {}, opts?: Oazapfts.RequestOpts) {
+    return oazapfts.ok(oazapfts.fetchJson<{
+        status: 200;
+        data: ScoreSubmission[];
+    } | {
+        status: 422;
+        data: HttpValidationError;
+    }>(`/api/scores${QS.query(QS.explode({
+        game_category: gameCategory,
+        game_difficulty: gameDifficulty,
+        before
+    }))}`, {
+        ...opts
+    }));
+}
+/**
+ * Submit Score
+ */
+export function submitScore(submitScoreRequest: SubmitScoreRequest, opts?: Oazapfts.RequestOpts) {
+    return oazapfts.ok(oazapfts.fetchJson<{
+        status: 200;
+        data: ScoreSubmission;
+    } | {
+        status: 422;
+        data: HttpValidationError;
+    }>("/api/scores", oazapfts.json({
+        ...opts,
+        method: "POST",
+        body: submitScoreRequest
+    })));
+}
+/**
+ * Average Score
+ */
+export function averageScore(gameCategory: string, gameDifficulty: GameDifficulty, opts?: Oazapfts.RequestOpts) {
+    return oazapfts.ok(oazapfts.fetchJson<{
+        status: 200;
+        data: AverageScoreResponse;
+    } | {
+        status: 422;
+        data: HttpValidationError;
+    }>(`/api/scores/average${QS.query(QS.explode({
+        game_category: gameCategory,
+        game_difficulty: gameDifficulty
+    }))}`, {
+        ...opts
+    }));
+}
+export enum GameDifficulty {
+    Beginner = "beginner",
+    Intermediate = "intermediate",
+    Advanced = "advanced"
 }

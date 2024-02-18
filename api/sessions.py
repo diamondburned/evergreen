@@ -4,7 +4,6 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from db import Database
 from db.models import *
-from ai.models import *
 from sqlmodel import select
 from datetime import datetime, timedelta
 import secrets
@@ -72,7 +71,7 @@ async def create_session(
     The user may later choose to register and log in.
     """
     async with db.begin_nested():
-        user = User(training_model=UserTrainingModel())
+        user = User()
         db.add(user)
 
     await db.refresh(user)
