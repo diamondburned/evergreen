@@ -24,5 +24,8 @@ export default defineConfig({
     proxy: {
       "/api": process.env.API_ENDPOINT || "",
     },
+    fs: {
+      allow: ["."],
+    },
   },
 });

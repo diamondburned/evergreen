@@ -13,12 +13,13 @@
   ];
 
   export let container = false;
+  export let forceReload = false;
 </script>
 
 <nav class:container>
   <ul>
     <li>
-      <a class="primary-text brand" href="/">
+      <a class="primary-text brand" href="/" data-sveltekit-reload={forceReload}>
         <img class="logo" src="/logo-small.png" alt="Evergreen Logo" />
         Evergreen
       </a>
@@ -28,7 +29,12 @@
   <ul>
     {#each navigation as { path, label }}
       <li>
-        <a class="on-background-text" class:active={$page.url.pathname == path} href={path}>
+        <a
+          class="on-background-text"
+          class:active={$page.url.pathname == path}
+          href={path}
+          data-sveltekit-reload={forceReload}
+        >
           {label}
         </a>
       </li>
