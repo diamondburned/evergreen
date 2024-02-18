@@ -89,15 +89,15 @@
     "levels": [
       {
         "label": "Decision Tree",
-        "description": "A decision support tool that uses a tree-like graph or model of decisions and their possible consequences."
+        "description": "Embark on a quest of fortune telling, where each choice branhes your path toward prediction!"
       },
       {
         "label": "Dimensionality Reduction",
-        "description": "The process of reducing the number of random variables under consideration."
+        "description": "Navigate vast, multidimensional landscapes with a magical compass that simplifies complexity!"
       },
       {
         "label": "Neural Networks",
-        "description": "A network or circuit of neurons, or in a modern sense, an artificial neural network."
+        "description": "Harness the power of an enchanted peer network, where interconnected insights reveal the world's hidden patterns!"
       }
     ]
   }
