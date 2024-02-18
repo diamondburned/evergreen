@@ -45,9 +45,17 @@
     },
   };
 
-  function formatSeconds(seconds: number) {
+  function formatSeconds(seconds: number, long = false) {
     const m = Math.floor(seconds / 60);
     const s = Math.ceil(seconds % 60);
+    if (long) {
+      if (m == 0) {
+        return s == 1 ? `${s} second` : `${s} seconds`;
+      }
+      const mm = m == 1 ? `${m} minute` : `${m} minutes`;
+      const ss = s == 1 ? `${s} second` : `${s} seconds`;
+      return `${mm} and ${ss}`;
+    }
     return `${m}:${s < 10 ? "0" : ""}${s}`;
   }
 
@@ -146,7 +154,8 @@
           .reverse()
           .findIndex((day) => day.value === 0)
       : 0;
-    currentStreak = lost === -1 ? `${dailyScoresData!.length}+` : `${lost}`;
+    currentStreak = lost == -1 ? `${dailyScoresData!.length}+` : `${lost}`;
+    currentStreak = lost == 1 ? `${currentStreak} day` : `${currentStreak} days`;
   }
 
   let currentAverageTimes = "";
@@ -154,7 +163,7 @@
     const avg = averageTimesData
       ? averageTimesData.reduce((sum, day) => sum + day.value, 0) / averageTimesData.length
       : 0;
-    currentAverageTimes = formatSeconds(avg);
+    currentAverageTimes = formatSeconds(avg, true);
   }
 </script>
 

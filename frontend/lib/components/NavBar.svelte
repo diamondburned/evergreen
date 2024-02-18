@@ -28,12 +28,7 @@
   <ul>
     {#each navigation as { path, label }}
       <li>
-        <a
-          class="on-background-text"
-          class:active={$page.url.pathname == path}
-          role="button"
-          href={path}
-        >
+        <a class="on-background-text" class:active={$page.url.pathname == path} href={path}>
           {label}
         </a>
       </li>

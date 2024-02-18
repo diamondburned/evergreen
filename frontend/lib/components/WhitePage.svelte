@@ -7,9 +7,9 @@
 
 <svelte:window bind:scrollY />
 
-<div class="white-page">
+<div class="white-page" class:scrolled>
   <slot name="header">
-    <header class:scrolled>
+    <header>
       <NavBar container />
     </header>
   </slot>
@@ -22,22 +22,22 @@
     width: 100%;
     min-height: 100%;
     background-color: var(--background);
-  }
 
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    & > :global(header) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: sticky;
+      top: 0;
+      z-index: 100;
 
-    background-color: rgba(var(--background-rgb), 0.75);
-    backdrop-filter: blur(6px);
+      background-color: rgba(var(--background-rgb), 0.75);
+      backdrop-filter: blur(6px);
 
-    transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
 
-    &.scrolled {
+    &.scrolled > :global(header) {
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     }
   }

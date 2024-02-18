@@ -67,7 +67,6 @@ h4,
 h5,
 h6,
 button,
-a[role="button"],
 label {
   font-family: "Linotte", sans-serif;
 }
@@ -92,8 +91,7 @@ input {
 
 a[role="button"] {
   text-decoration: none;
-  text-align: center;
-  display: block;
+	display: block;
 }
 
 button.floaty,

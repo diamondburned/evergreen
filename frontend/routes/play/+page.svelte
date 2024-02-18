@@ -1,6 +1,12 @@
-<main class="game-container">
-  <iframe src="/dashboard" title="Codingame" />
-</main>
+<script>
+  import WhitePage from "$lib/components/WhitePage.svelte";
+</script>
+
+<WhitePage>
+  <main class="game-container">
+    <iframe src="/dashboard" title="Codingame" />
+  </main>
+</WhitePage>
 
 <style lang="scss">
   .game-container {
@@ -9,10 +15,6 @@
     height: 100%;
     overflow: hidden;
     background-color: var(--background);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     iframe {
       width: 100%;

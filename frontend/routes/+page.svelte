@@ -23,7 +23,7 @@
         </div>
       {:else}
         <div in:fly={{ y: 30, duration: 500, delay: 500 }}>
-          <button class="floaty inverted">Play</button>
+          <a role="button" class="large floaty inverted" href="/play">Play</a>
           <p class="alt-action">
             {#if $isLoggedIn}
               You are logged in. <a href="/dashboard">Go to Dashboard</a>
@@ -68,7 +68,8 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   }
 
-  button {
+  button,
+  a[role="button"] {
     padding: 0.75em;
     width: 300px;
     max-width: 100%;

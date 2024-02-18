@@ -88,10 +88,6 @@
 </svelte:head>
 
 <WhitePage>
-  <header class="container">
-    <NavBar />
-  </header>
-
   <section class="container">
     <h2>Settings</h2>
 
@@ -298,5 +294,6 @@
     border-radius: 50%;
     width: 120px;
     margin-right: 20px;
+    border: 2px solid var(--primary);
   }
 </style>
