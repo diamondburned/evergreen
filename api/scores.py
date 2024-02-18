@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Annotated, Optional, Sequence
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
@@ -16,7 +17,10 @@ async def list_scores(
     game_difficulty: GameDifficulty,
     db: Database = Depends(db.use),
     user_id: str = Depends(authorize),
-    before: Annotated[Optional[int], "The score ID to start descending from."] = None,
+    from_time: Annotated[
+        Optional[datetime], "Time to start listing scores from."
+    ] = None,
+    to_time: Annotated[Optional[datetime], "Time to stop listing scores at."] = None,
 ) -> Sequence[ScoreSubmission]:
     scores_query = await db.exec(
         select(ScoreSubmission)
@@ -24,7 +28,8 @@ async def list_scores(
             ScoreSubmission.user_id == user_id
             and ScoreSubmission.game_category == game_category
             and ScoreSubmission.game_difficulty == game_difficulty
-            and (ScoreSubmission.id < before if before else True)
+            and (from_time is None or ScoreSubmission.submitted_at >= from_time)
+            and (to_time is None or ScoreSubmission.submitted_at <= to_time)
         )
         .order_by(col(ScoreSubmission.id).desc())
     )

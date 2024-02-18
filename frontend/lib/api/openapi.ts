@@ -199,8 +199,9 @@ export function login(loginSessionRequest: LoginSessionRequest, opts?: Oazapfts.
 /**
  * List Scores
  */
-export function listScores(gameCategory: string, gameDifficulty: GameDifficulty, { before }: {
-    before?: number | null;
+export function listScores(gameCategory: string, gameDifficulty: GameDifficulty, { fromTime, toTime }: {
+    fromTime?: string | null;
+    toTime?: string | null;
 } = {}, opts?: Oazapfts.RequestOpts) {
     return oazapfts.ok(oazapfts.fetchJson<{
         status: 200;
@@ -211,7 +212,8 @@ export function listScores(gameCategory: string, gameDifficulty: GameDifficulty,
     }>(`/api/scores${QS.query(QS.explode({
         game_category: gameCategory,
         game_difficulty: gameDifficulty,
-        before
+        from_time: fromTime,
+        to_time: toTime
     }))}`, {
         ...opts
     }));
