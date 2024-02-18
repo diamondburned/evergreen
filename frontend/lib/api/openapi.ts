@@ -81,6 +81,15 @@ export type SubmitScoreRequest = {
     average_score: number;
     time_taken: number;
 };
+export type SubmitScoreResponse = {
+    id: number;
+    game_category: string;
+    game_difficulty: GameDifficulty;
+    rounds: RoundInfo[];
+    average_score: number;
+    time_taken: number;
+    submitted_at: string;
+};
 /**
  * Get Asset
  */
@@ -226,7 +235,7 @@ export function listScores({ gameCategory, gameDifficulty, fromTime, toTime }: {
 export function submitScore(submitScoreRequest: SubmitScoreRequest, opts?: Oazapfts.RequestOpts) {
     return oazapfts.ok(oazapfts.fetchJson<{
         status: 200;
-        data: ScoreSubmission;
+        data: SubmitScoreResponse;
     } | {
         status: 422;
         data: HttpValidationError;
