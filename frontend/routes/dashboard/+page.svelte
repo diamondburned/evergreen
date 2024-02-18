@@ -165,9 +165,8 @@
 
   let currentAverageTimes = "";
   $: {
-    const avg = averageTimesData
-      ? averageTimesData.reduce((sum, day) => sum + day.value, 0) / averageTimesData.length
-      : 0;
+    const data = (averageTimesData || []).filter((day) => day.value > 0);
+    const avg = data ? data.reduce((sum, day) => sum + day.value, 0) / data.length : 0;
     currentAverageTimes = formatSeconds(avg, true);
   }
 </script>
