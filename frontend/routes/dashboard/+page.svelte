@@ -59,14 +59,17 @@
     return `${m}:${s < 10 ? "0" : ""}${s}`;
   }
 
-  function startOfWeek(date: Date) {
-    const diff = date.getDate() - date.getDay();
-    return new Date(date.setDate(diff));
+  function subtractDays(date: Date, days: number) {
+    const result = new Date(date);
+    result.setDate(result.getDate() - days);
+    result.setHours(0, 0, 0, 0);
+    return result;
   }
 
-  function endOfWeek(date: Date) {
-    const diff = date.getDate() - date.getDay() + 6;
-    return new Date(date.setDate(diff));
+  function startOfDay(date: Date) {
+    const result = new Date(date);
+    result.setHours(0, 0, 0, 0);
+    return result;
   }
 
   type DailySubmissions = {
@@ -81,7 +84,7 @@
 
   let now = new Date();
   let timeRange: [Date, Date];
-  $: timeRange = [startOfWeek(now), endOfWeek(now)];
+  $: timeRange = [subtractDays(now, 7), now];
 
   async function refresh() {
     error = undefined;
@@ -97,11 +100,12 @@
         .fill([])
         .map((_, i) => {
           const date = new Date(now);
-          date.setDate(date.getDate() - i + 1);
+          date.setDate(date.getDate() - i);
+          date.setHours(0, 0, 0, 0);
           return {
             date,
             scores: scores.filter((score) => {
-              const scoreDate = new Date(Date.parse(score.submitted_at!));
+              const scoreDate = new Date(Date.parse(score.submitted_at! + "Z"));
               return (
                 scoreDate.getDate() === date.getDate() &&
                 scoreDate.getMonth() === date.getMonth() &&
@@ -127,13 +131,14 @@
     if (dailyScores.length === 0) {
       return null;
     }
+    console.log(dailyScores);
     return [
       {
         time: Math.round(timeRange[0].getTime() / 1000),
         value: 0,
       },
       ...dailyScores.map((day) => ({
-        time: Math.round(day.date.getTime() / 1000),
+        time: Math.round(day.date.getTime() / 1000) - day.date.getTimezoneOffset() * 60,
         value: valueFn(day.scores),
       })),
     ];
