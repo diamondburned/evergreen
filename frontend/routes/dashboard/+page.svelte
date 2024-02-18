@@ -6,6 +6,13 @@
   import { listScores, type ScoreSubmission } from "$lib/api";
   import { onMount } from "svelte";
 
+  import FusionCharts from 'fusioncharts';
+  import Charts from 'fusioncharts/fusioncharts.charts';
+  import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+  import SvelteFC, { fcRoot } from 'svelte-fusioncharts';
+
+  fcRoot(FusionCharts, Charts, FusionTheme);
+
   $: categories = categories_ as unknown as Categories; // fix typescript error
 
   function startOfWeek(date: Date) {
@@ -44,6 +51,39 @@
       })
       .reverse();
   });
+
+  const data = pastWeekScores.map((scores, i) => {
+      const day = new Date(now);
+      day.setDate(day.getDate() - i + 1);
+      const dateKey = `${(day.getMonth() + 1).toString().padStart(2, '0')}/${day.getDate().toString().padStart(2, '0')}/${day.getFullYear().toString().slice(-2)}`;
+      return {"label": dateKey, "value": scores.length};
+    });
+
+  console.log(data[0]);
+
+  const dataSource = {
+    "chart": {
+      "caption": "Countries With Most Oil Reserves [2022-23]",
+      "subcaption": "In MMbbl = One Million barrels",
+      "xaxisname": "Country",
+      "yaxisname": "Reserves (MMbbl)",
+      "numbersuffix": "K",
+      "theme": "gammel"
+    },
+    "data": pastWeekScores.map((scores, i) => {
+      const day = new Date(now);
+      day.setDate(day.getDate() - i + 1);
+      const dateKey = `${(day.getMonth() + 1).toString().padStart(2, '0')}/${day.getDate().toString().padStart(2, '0')}/${day.getFullYear().toString().slice(-2)}`;
+      return {"label": dateKey, "value": scores.length};
+    }),
+  };
+  const chartConfigs = {
+    type: 'column2d',
+    width: 600,
+    height: 400,
+    dataFormat: 'json',
+    dataSource
+  };
 </script>
 
 <svelte:head>
@@ -65,6 +105,8 @@
           <h3>Streaks</h3>
           <p>Measure of how many days in a row you have completed your daily goal.</p>
         </hgroup>
+
+        <SvelteFC {...chartConfigs} />
 
         <p>Current Streak: 0</p>
       </article>
