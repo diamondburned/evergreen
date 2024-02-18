@@ -5,15 +5,35 @@
   import { type Categories } from "$lib/components/roadmap/Roadmap.svelte";
   import { listScores, type ScoreSubmission } from "$lib/api";
   import { onMount } from "svelte";
-
-  import FusionCharts from 'fusioncharts';
-  import Charts from 'fusioncharts/fusioncharts.charts';
-  import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
-  import SvelteFC, { fcRoot } from 'svelte-fusioncharts';
-
-  fcRoot(FusionCharts, Charts, FusionTheme);
+  import { Chart, TimeScale, HistogramSeries } from "svelte-lightweight-charts";
+  import { ColorType, type DeepPartial, type TimeChartOptions } from "lightweight-charts";
+  import LoadingDots from "$lib/components/LoadingDots.svelte";
 
   $: categories = categories_ as unknown as Categories; // fix typescript error
+
+  const styles = window.getComputedStyle(document.body);
+  const mutedColor = styles.getPropertyValue("--primary-rgb");
+
+  const chartOpts: DeepPartial<TimeChartOptions> = {
+    width: 800,
+    height: 400,
+    autoSize: true,
+    handleScale: false,
+    handleScroll: false,
+    grid: {
+      vertLines: { visible: false },
+      horzLines: { visible: true, color: `rgba(${mutedColor}, 0.25)` },
+    },
+    layout: {
+      background: { type: ColorType.Solid, color: "transparent" },
+      textColor: styles.color,
+      fontFamily: styles.fontFamily,
+    },
+    rightPriceScale: {
+      borderVisible: false,
+      scaleMargins: { top: 0.05, bottom: 0 },
+    },
+  };
 
   function startOfWeek(date: Date) {
     const diff = date.getDate() - date.getDay();
@@ -25,65 +45,77 @@
     return new Date(date.setDate(diff));
   }
 
-  let pastWeekScores: ScoreSubmission[][] = []; // today last
-  $: console.log(pastWeekScores);
-
-  onMount(async () => {
-    const now = new Date();
-    const scores = await listScores({
-      fromTime: startOfWeek(now).toISOString(),
-      toTime: endOfWeek(now).toISOString(),
-    });
-
-    pastWeekScores = new Array(7)
-      .fill([])
-      .map((_, i) => {
-        const day = new Date(now);
-        day.setDate(day.getDate() - i + 1);
-        return scores.filter((score) => {
-          const scoreDate = new Date(Date.parse(score.submitted_at!));
-          return (
-            scoreDate.getDate() === day.getDate() &&
-            scoreDate.getMonth() === day.getMonth() &&
-            scoreDate.getFullYear() === day.getFullYear()
-          );
-        });
-      })
-      .reverse();
-  });
-
-  const data = pastWeekScores.map((scores, i) => {
-      const day = new Date(now);
-      day.setDate(day.getDate() - i + 1);
-      const dateKey = `${(day.getMonth() + 1).toString().padStart(2, '0')}/${day.getDate().toString().padStart(2, '0')}/${day.getFullYear().toString().slice(-2)}`;
-      return {"label": dateKey, "value": scores.length};
-    });
-
-  console.log(data[0]);
-
-  const dataSource = {
-    "chart": {
-      "caption": "Countries With Most Oil Reserves [2022-23]",
-      "subcaption": "In MMbbl = One Million barrels",
-      "xaxisname": "Country",
-      "yaxisname": "Reserves (MMbbl)",
-      "numbersuffix": "K",
-      "theme": "gammel"
-    },
-    "data": pastWeekScores.map((scores, i) => {
-      const day = new Date(now);
-      day.setDate(day.getDate() - i + 1);
-      const dateKey = `${(day.getMonth() + 1).toString().padStart(2, '0')}/${day.getDate().toString().padStart(2, '0')}/${day.getFullYear().toString().slice(-2)}`;
-      return {"label": dateKey, "value": scores.length};
-    }),
+  type DailySubmissions = {
+    date: Date;
+    scores: ScoreSubmission[];
   };
-  const chartConfigs = {
-    type: 'column2d',
-    width: 600,
-    height: 400,
-    dataFormat: 'json',
-    dataSource
-  };
+
+  let error: string | undefined;
+  let scores: ScoreSubmission[] = [];
+  let pastWeekScores: DailySubmissions[] = []; // today last
+  let loading = true;
+
+  let now = new Date();
+  let timeRange: [Date, Date];
+  $: timeRange = [startOfWeek(now), endOfWeek(now)];
+
+  async function refresh() {
+    error = undefined;
+    loading = true;
+
+    try {
+      scores = await listScores({
+        fromTime: timeRange[0].toISOString(),
+        toTime: timeRange[1].toISOString(),
+      });
+
+      pastWeekScores = new Array(7)
+        .fill([])
+        .map((_, i) => {
+          const date = new Date(now);
+          date.setDate(date.getDate() - i + 1);
+          return {
+            date,
+            scores: scores.filter((score) => {
+              const scoreDate = new Date(Date.parse(score.submitted_at!));
+              return (
+                scoreDate.getDate() === date.getDate() &&
+                scoreDate.getMonth() === date.getMonth() &&
+                scoreDate.getFullYear() === date.getFullYear()
+              );
+            }),
+          };
+        })
+        .reverse();
+    } catch (err) {
+      error = `${err}`;
+      console.log(err);
+    } finally {
+      loading = false;
+    }
+  }
+  onMount(() => refresh());
+
+  function mapPastWeekScores(
+    dailyScores: DailySubmissions[],
+    valueFn: (_: ScoreSubmission[]) => number,
+  ) {
+    if (dailyScores.length === 0) {
+      return null;
+    }
+    return [
+      {
+        time: Math.round(timeRange[0].getTime() / 1000),
+        value: 0,
+      },
+      ...dailyScores.map((day) => ({
+        time: Math.round(day.date.getTime() / 1000),
+        value: valueFn(day.scores),
+      })),
+    ];
+  }
+
+  $: dailyScoresData = mapPastWeekScores(pastWeekScores, (dayScores) => dayScores.length);
 </script>
 
 <svelte:head>
@@ -99,27 +131,44 @@
   <section class="container">
     <h2>Dashboard</h2>
 
-    <div class="stats-cards">
-      <article>
-        <hgroup>
-          <h3>Streaks</h3>
-          <p>Measure of how many days in a row you have completed your daily goal.</p>
-        </hgroup>
+    {#if loading}
+      <LoadingDots padded />
+    {:else}
+      <div class="stats-cards">
+        <article>
+          <hgroup>
+            <h3>Streaks</h3>
+            <p>Measure of how many days in a row you have completed your daily goal.</p>
+          </hgroup>
 
-        <SvelteFC {...chartConfigs} />
+          <p>Current Streak: 0</p>
 
-        <p>Current Streak: 0</p>
-      </article>
+          <Chart {...chartOpts}>
+            <TimeScale
+              lockVisibleTimeRangeOnResize={true}
+              borderVisible={false}
+              timeVisible={true}
+              secondsVisible={false}
+              fixLeftEdge={true}
+              fixRightEdge={true}
+            />
+            <HistogramSeries
+              data={dailyScoresData}
+              priceFormat={{ type: "price", precision: 0, minMove: 1 }}
+            />
+          </Chart>
+        </article>
 
-      <article>
-        <hgroup>
-          <h3>Average Times</h3>
-          <p>Measure of how long on average you took to solve a problem over time.</p>
-        </hgroup>
+        <article>
+          <hgroup>
+            <h3>Average Times</h3>
+            <p>Measure of how long on average you took to solve a problem over time.</p>
+          </hgroup>
 
-        <p>Daily Average: 0</p>
-      </article>
-    </div>
+          <p>Daily Average: 0</p>
+        </article>
+      </div>
+    {/if}
   </section>
 </WhitePage>
 
@@ -131,13 +180,17 @@
     width: 100%;
   }
 
+  section:last-child {
+    margin-bottom: 2rem;
+  }
+
   section.container {
     align-items: baseline;
   }
 
   .stats-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 1rem;
     width: 100%;
 
@@ -150,12 +203,9 @@
         margin: 0.5rem 0;
       }
 
-      hgroup {
-        border-bottom: 1px solid rgba(var(--primary-rgb), 0.25);
-        p {
-          margin-top: 0;
-          font-size: 0.9rem;
-        }
+      hgroup p {
+        margin-top: 0;
+        font-size: 0.9rem;
       }
     }
   }

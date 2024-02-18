@@ -2,10 +2,12 @@
   export let dotSize = 16;
   export let distance = 12;
   export let duration = "1s";
+  export let padded = false;
 </script>
 
 <div
   class="loading-dots"
+  class:padded
   style="--dot-size: {dotSize}px; --distance: {distance}px; --duration: {duration};"
 >
   <span class="loader"></span>
@@ -19,6 +21,13 @@
 
     width: calc(var(--dot-size) * 4 + var(--gap-size) * 3);
     height: calc(var(--dot-size) * 2 + var(--distance));
+
+    &.padded {
+      min-height: 20vh;
+      display: flex;
+      align-items: center;
+      margin: auto;
+    }
   }
 
   .loader {
