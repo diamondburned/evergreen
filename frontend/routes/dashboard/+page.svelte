@@ -1,13 +1,16 @@
 <script lang="ts">
+  import LoadingDots from "$lib/components/LoadingDots.svelte";
   import WhitePage from "$lib/components/WhitePage.svelte";
   import Roadmap from "$lib/components/roadmap/Roadmap.svelte";
+
   import categories_ from "$lib/categories.json";
   import { type Categories } from "$lib/components/roadmap/Roadmap.svelte";
+
   import { listScores, type ScoreSubmission } from "$lib/api";
   import { onMount } from "svelte";
-  import { Chart, TimeScale, HistogramSeries } from "svelte-lightweight-charts";
+
+  import { Chart, TimeScale, HistogramSeries, LineSeries } from "svelte-lightweight-charts";
   import { ColorType, type DeepPartial, type TimeChartOptions } from "lightweight-charts";
-  import LoadingDots from "$lib/components/LoadingDots.svelte";
 
   $: categories = categories_ as unknown as Categories; // fix typescript error
 
@@ -15,8 +18,7 @@
   const mutedColor = styles.getPropertyValue("--primary-rgb");
 
   const chartOpts: DeepPartial<TimeChartOptions> = {
-    width: 800,
-    height: 400,
+    height: 350,
     autoSize: true,
     handleScale: false,
     handleScroll: false,
@@ -31,9 +33,23 @@
     },
     rightPriceScale: {
       borderVisible: false,
-      scaleMargins: { top: 0.05, bottom: 0 },
+      scaleMargins: { top: 0.05, bottom: 0.05 },
+    },
+    timeScale: {
+      lockVisibleTimeRangeOnResize: true,
+      borderVisible: false,
+      timeVisible: true,
+      secondsVisible: false,
+      fixLeftEdge: true,
+      fixRightEdge: true,
     },
   };
+
+  function formatSeconds(seconds: number) {
+    const m = Math.floor(seconds / 60);
+    const s = Math.ceil(seconds % 60);
+    return `${m}:${s < 10 ? "0" : ""}${s}`;
+  }
 
   function startOfWeek(date: Date) {
     const diff = date.getDate() - date.getDay();
@@ -116,6 +132,30 @@
   }
 
   $: dailyScoresData = mapPastWeekScores(pastWeekScores, (dayScores) => dayScores.length);
+  $: averageTimesData = mapPastWeekScores(pastWeekScores, (dayScores) => {
+    return dayScores.length === 0
+      ? 0
+      : dayScores.reduce((sum, score) => sum + score.time_taken, 0) / dayScores.length;
+  });
+
+  let currentStreak = "";
+  $: {
+    const lost = dailyScoresData
+      ? dailyScoresData
+          .slice()
+          .reverse()
+          .findIndex((day) => day.value === 0)
+      : 0;
+    currentStreak = lost === -1 ? `${dailyScoresData!.length}+` : `${lost}`;
+  }
+
+  let currentAverageTimes = "";
+  $: {
+    const avg = averageTimesData
+      ? averageTimesData.reduce((sum, day) => sum + day.value, 0) / averageTimesData.length
+      : 0;
+    currentAverageTimes = formatSeconds(avg);
+  }
 </script>
 
 <svelte:head>
@@ -141,17 +181,8 @@
             <p>Measure of how many days in a row you have completed your daily goal.</p>
           </hgroup>
 
-          <p>Current Streak: 0</p>
-
+          <p>Current Streak: <span class="value">{currentStreak}</span></p>
           <Chart {...chartOpts}>
-            <TimeScale
-              lockVisibleTimeRangeOnResize={true}
-              borderVisible={false}
-              timeVisible={true}
-              secondsVisible={false}
-              fixLeftEdge={true}
-              fixRightEdge={true}
-            />
             <HistogramSeries
               data={dailyScoresData}
               priceFormat={{ type: "price", precision: 0, minMove: 1 }}
@@ -165,7 +196,16 @@
             <p>Measure of how long on average you took to solve a problem over time.</p>
           </hgroup>
 
-          <p>Daily Average: 0</p>
+          <p>Current Average: <span class="value">{currentAverageTimes}</span></p>
+          <Chart {...chartOpts}>
+            <LineSeries
+              data={averageTimesData}
+              priceFormat={{
+                type: "custom",
+                formatter: formatSeconds,
+              }}
+            />
+          </Chart>
         </article>
       </div>
     {/if}
@@ -173,6 +213,10 @@
 </WhitePage>
 
 <style lang="scss">
+  h2 {
+    font-size: 1.75em;
+  }
+
   section {
     display: flex;
     flex-direction: column;
@@ -190,7 +234,7 @@
 
   .stats-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 1rem;
     width: 100%;
 
@@ -198,6 +242,7 @@
       padding: 1rem;
       border: 1px solid var(--primary);
       border-radius: 15px;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
       h3 {
         margin: 0.5rem 0;
@@ -206,6 +251,10 @@
       hgroup p {
         margin-top: 0;
         font-size: 0.9rem;
+      }
+
+      span.value {
+        font-weight: bold;
       }
     }
   }

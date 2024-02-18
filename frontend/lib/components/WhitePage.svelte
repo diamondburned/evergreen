@@ -2,7 +2,7 @@
   import NavBar from "./NavBar.svelte";
 
   let scrollY = 0;
-  $: scrolled = scrollY > 0;
+  $: scrolled = scrollY > 5;
 </script>
 
 <svelte:window bind:scrollY />
