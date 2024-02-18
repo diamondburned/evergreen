@@ -3,6 +3,7 @@
 
   export let label: string;
   export let description: string;
+  export let slot: number;
   export let flip: boolean = false;
 
   // Deal with the consequences of our sin: by abusing an SVG for the roadmap.
@@ -53,6 +54,7 @@
 <p
   class="node"
   class:flip
+  data-slot={slot}
   data-description={description}
   bind:this={nodeElement}
   on:mouseenter={() => tooltipElement.classList.add("visible")}
@@ -67,7 +69,8 @@
     margin: auto;
     border: 2px solid var(--primary);
     border-radius: 15px;
-    padding: 0.45rem 1.5rem;
+    padding: 0.45rem 1.15rem;
+    position: relative;
 
     transition: all 0.1s ease-in-out;
 
@@ -77,12 +80,29 @@
       cursor: help;
     }
 
+    &::before {
+      content: attr(data-slot);
+      display: block;
+      position: absolute;
+      left: -2rem;
+      border: 1.5px solid var(--primary);
+      border-radius: 50px;
+      width: 1rem;
+      height: 1rem;
+      text-align: center;
+      line-height: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background-color: var(--background);
+      color: var(--primary);
+    }
+
     &.flip {
       transform: rotateY(180deg);
     }
   }
 
-  :global(.roadmap-tooltip) {
+  :global(p.roadmap-tooltip) {
     display: block;
 
     opacity: 0;
@@ -115,7 +135,7 @@
     }
   }
 
-  :global(.roadmap-tooltip.visible) {
+  :global(p.roadmap-tooltip.visible) {
     opacity: 1;
     pointer-events: auto;
     --top-offset: 0;

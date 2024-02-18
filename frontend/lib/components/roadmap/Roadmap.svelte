@@ -55,13 +55,28 @@
       <div class="roadmap-box" class:flip in:fly={transitionIn} out:fly={transitionOut}>
         <SVG>
           <div class="contents" slot="1">
-            <RoadmapButton label={levels[0].label} description={levels[0].description} {flip} />
+            <RoadmapButton
+              slot={1}
+              label={levels[0].label}
+              description={levels[0].description}
+              {flip}
+            />
           </div>
           <div class="contents" slot="2">
-            <RoadmapButton label={levels[1].label} description={levels[1].description} {flip} />
+            <RoadmapButton
+              slot={2}
+              label={levels[1].label}
+              description={levels[1].description}
+              {flip}
+            />
           </div>
           <div class="contents" slot="3">
-            <RoadmapButton label={levels[2].label} description={levels[2].description} {flip} />
+            <RoadmapButton
+              slot={3}
+              label={levels[2].label}
+              description={levels[2].description}
+              {flip}
+            />
           </div>
         </SVG>
       </div>
@@ -96,7 +111,7 @@
   }
 
   .sidebar {
-    width: 20rem;
+    width: 22rem;
     height: fit-content;
     border-right: 1px solid rgba(var(--primary-rgb), 0.25);
     margin: auto;
