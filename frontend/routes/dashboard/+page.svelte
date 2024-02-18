@@ -264,5 +264,10 @@
     margin-left: auto;
     margin-right: auto;
     position: relative;
+
+    h2 {
+      position: absolute;
+      margin: 0;
+    }
   }
 </style>
