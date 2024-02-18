@@ -71,6 +71,7 @@
       &.active {
         color: var(--md-sys-color-primary);
         font-weight: 700;
+        transition-delay: 170ms; /* keep the same as +layout.svelte */
       }
 
       &:hover {

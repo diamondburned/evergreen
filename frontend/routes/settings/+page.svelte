@@ -1,57 +1,86 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-	import NavBar from '$lib/components/NavBar.svelte';
-	import WhitePage from '$lib/components/WhitePage.svelte';
-  import { getAsset, uploadAsset, getSelf, updateSelf } from '$lib/api';
+  import { onMount } from "svelte";
+  import NavBar from "$lib/components/NavBar.svelte";
+  import WhitePage from "$lib/components/WhitePage.svelte";
+  import ErrorMessage from "$lib/components/ErrorMessage.svelte";
+  import {
+    uploadAsset,
+    getSelf,
+    updateSelf as updateSelfAPI,
+    type UserResponse,
+    type UpdateUserRequest,
+  } from "$lib/api";
 
-  let fileinput;
-  let user, display_name, email, avatar_hash;
-  let display_name_changed = false;
-  let show_email_input = false;
-  let show_password_input = false;
+  let self: UserResponse;
+  $: isAnonymous = !self || self.email === null;
+
+  let busy = false;
+  let error: string | undefined;
+
+  let files: FileList;
+
+  let password: string;
+  let passwordConfirmation: string;
+  $: confirmedPassword = !!password && password === passwordConfirmation;
+
+  let displayNameChanged = false;
+  let showEmailnput = false;
+  let showPasswordInput = false;
+
+  // updateSelf wraps the updateSelfAPI function and handles the busy state and
+  // error handling.
+  async function updateSelf(data: UpdateUserRequest) {
+    busy = true;
+    error = undefined;
+    try {
+      self = await updateSelfAPI(data);
+    } catch (err) {
+      error = `${err}`;
+      console.error(err);
+    } finally {
+      busy = false;
+    }
+  }
 
   async function setAvatar() {
-    avatar_file = await uploadAsset();
-    avatar_hash = avatar_file.hash;
-    self.update();
+    if (!files) return;
+    const avatar = await uploadAsset({ file: files[0]!.slice() });
+    await updateSelf({ avatar_hash: avatar.hash });
   }
 
-  function changeDisplayName() {
-    display_name_changed = true;
+  async function displayNameButtonPressed() {
+    if (!displayNameChanged) {
+      displayNameChanged = true;
+      return;
+    }
+
+    displayNameChanged = false;
+    await updateSelf({ display_name: self.display_name });
   }
 
-  function setDisplayName() {
-    display_name_changed = false;
+  async function emailButtonPressed() {
+    if (!showEmailnput) {
+      showEmailnput = true;
+      return;
+    }
+
+    showEmailnput = false;
+    await updateSelf({ email: self.email });
   }
 
-  function toggleEmailInput() {
-    show_email_input = ! show_email_input;
-  }
+  async function passwordButtonPressed() {
+    if (!showPasswordInput) {
+      showPasswordInput = true;
+      return;
+    }
 
-  function togglePasswordInput() {
-    show_password_input = ! show_password_input;
+    showPasswordInput = false;
+    await updateSelf({ password });
   }
 
   onMount(async () => {
-    user = await getSelf();
-    display_name = user.display_name;
-    email = user.email;
-    avatar_hash = user.avatar_hash;
-    console.log(email, avatar_hash);
+    self = await getSelf();
   });
-
-  async function update() {
-    let userUpdateObj = {
-      display_name: display_name,
-      email: email,
-      avatar_hash: avatar_hash,
-      password: password,
-    };
-    await updateSelf(userUpdateObj);
-    user = await getSelf();
-    console.log(user.display_name, user.email, user.password);
-  }
-  
 </script>
 
 <svelte:head>
@@ -59,138 +88,215 @@
 </svelte:head>
 
 <WhitePage>
-    <header class="container">
-        <NavBar />
-    </header>
+  <header class="container">
+    <NavBar />
+  </header>
 
-    <form class="container" on:submit={update}>
-      <h2>Settings</h2>
+  <section class="container">
+    <h2>Settings</h2>
 
-      <section class="settings">
-        <div>
-          <h3> Avatar </h3>
+    <form class="settings">
+      {#if !self}
+        <p class="loading">Loading...</p>
+      {:else if isAnonymous}
+        <h3>Warning</h3>
+        <p>You are currently an anonymous user. You can create an account to save your settings.</p>
+        <p>
+          To create an account, head to the <a href="/register">signup page</a>.
+        </p>
+      {:else if self}
+        <ErrorMessage bind:error />
+
+        <formset class="avatar">
+          <h3>Avatar</h3>
           <div class="user">
-            <img src="/stock-avatar.jpeg" class="avatar" alt="avatar"/>
-            <input bind:this={avatar_hash} type="file" accept=".jpg, jpeg, .png, .webp"/>
+            <img
+              src={self.avatar_hash ? `/api/assets/${self.avatar_hash}` : `/stock-avatar.jpeg`}
+              alt="Avatar"
+              class="avatar"
+            />
+            <div role="group">
+              <input type="file" bind:files accept=".jpg, jpeg, .png, .webp" disabled={busy} />
+              <button
+                class="large floaty inverted"
+                type="submit"
+                on:click={setAvatar}
+                disabled={busy || !files}
+              >
+                Save
+              </button>
+            </div>
           </div>
-        </div>
-        <div>
+        </formset>
+
+        <formset class="display-name">
           <h3>Display Name</h3>
           <div class="user">
-            <input bind:value={display_name} on:input={changeDisplayName}>
-            {#if display_name_changed}
-            <button class="hover" type="submit" on:click={setDisplayName}>
+            <input
+              bind:value={self.display_name}
+              on:input={() => (displayNameChanged = true)}
+              disabled={busy}
+            />
+            <button
+              class="large floaty inverted"
+              type="submit"
+              on:click={displayNameButtonPressed}
+              disabled={busy || !displayNameChanged}
+            >
               Save
             </button>
-            {/if}
           </div>
-        </div>
-        <div>
-          <h3> Email: </h3>
+        </formset>
+
+        <formset class="email">
+          <h3>Email:</h3>
           <div class="user">
-            {#if show_email_input}
-               <input bind:value={email}>
+            {#if showEmailnput}
+              <input bind:value={self.email} />
             {:else}
-              <p>{email}</p>
+              <p>
+                {#if self.email}
+                  {self.email}
+                {:else}
+                  <em>No email set for anonymous user</em>
+                {/if}
+              </p>
             {/if}
-            <button class="hover" type="submit" on:click={toggleEmailInput}>
-              {#if show_email_input}
+            <button
+              class="large floaty inverted"
+              type="submit"
+              on:click={emailButtonPressed}
+              disabled={busy}
+            >
+              {#if showEmailnput}
                 Save
               {:else}
                 Change email
               {/if}
             </button>
           </div>
-        </div>
-        <div>
-          <h3> Password: </h3>
+        </formset>
+
+        <formset class="password">
+          <h3>Password:</h3>
           <div class="user">
-            {#if show_password_input}
-              <div class="change-password">
-                <p>Old Password</p>
-                <input>
-                <p>New Password</p>
-                <input>
-                <p>Confirm New Password</p>
-                <input>
-              </div>
+            {#if showPasswordInput}
+              <formset class="change-password">
+                <label>
+                  New Password
+                  <input type="password" bind:value={password} />
+                </label>
+                <label>
+                  Confirm New Password
+                  <input type="password" bind:value={passwordConfirmation} />
+                </label>
+              </formset>
+            {:else if busy}
+              <i>Cannot change password for anonymous user</i>
             {:else}
-              <p>********</p>
+              <p>************</p>
             {/if}
-            <button class="hover" type="submit" on:click={togglePasswordInput}>
-              {#if show_password_input}
+            <button
+              class="large floaty inverted"
+              type="submit"
+              on:click={passwordButtonPressed}
+              disabled={showPasswordInput ? !confirmedPassword : busy}
+            >
+              {#if showPasswordInput}
                 Save
               {:else}
                 Change password
               {/if}
             </button>
           </div>
-        </div>
-      </section>
+        </formset>
+      {/if}
     </form>
+  </section>
 </WhitePage>
 
 <style lang="scss">
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    form.container {
-      align-items: baseline;
-    }
-    section.settings {
-      width: 100%;
-      padding: 1rem;
-      border: 1px solid var(--primary);
-      border-radius: 15px;
+  p.loading {
+    text-align: center;
+  }
 
-      h3 {
-        margin: 0.5rem 0;
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  form {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h3 {
+      margin: 1rem 0;
+    }
+
+    div.user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    formset.avatar {
+      input[type="file"] {
+        height: 100%;
+        margin: 0;
       }
-      
-      div {
-        margin-bottom: 36px;
-      }
-      div.user {
+
+      div[role="group"] {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+
+        & > *:not(:first-child) {
+          border-radius: 0 15px 15px 0;
+        }
+
+        & > *:not(:last-child) {
+          border-radius: 15px 0 0 15px;
+        }
+
+        button {
+          max-width: fit-content;
+        }
       }
     }
-    img.avatar {
-      border-radius: 50%;
-      width: 120px;
-      margin-right: 20px;
-    }
+
     input {
       margin-top: 0.25em;
       padding: 0.5em;
       border: 1px solid var(--primary);
       border-radius: 15px;
     }
-    button {
-      padding: 0.75em;
-      width: 240px;
-      max-width: 100%;
 
-      font-size: 15px;
-
-      border: none;
-      border-radius: 15px;
-
-      background-color: var(--primary);
-      color: white;
-    }
-    div.change-password {
+    formset.change-password {
       display: flex;
       flex-direction: column;
-      * {
-        margin-bottom: 0.25em;
-      }
+      gap: 1rem;
     }
+  }
+
+  img.avatar {
+    border-radius: 50%;
+    width: 120px;
+    margin-right: 20px;
+  }
 </style>

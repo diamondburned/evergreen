@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
-  import { isAuthorized } from "$lib/api";
+  import { isAuthorized, isLoggedIn } from "$lib/api";
 
   import Hero from "$lib/components/Hero.svelte";
   import LoadingDots from "$lib/components/LoadingDots.svelte";
@@ -24,7 +24,13 @@
       {:else}
         <div in:fly={{ y: 30, duration: 500, delay: 500 }}>
           <button class="floaty inverted">Play</button>
-          <p class="login">Already played? <a href="/login">Sign In</a></p>
+          <p class="alt-action">
+            {#if isLoggedIn}
+              You are logged in. <a href="/dashboard">Go to Dashboard</a>
+            {:else}
+              Already played? <a href="/login">Sign in</a>
+            {/if}
+          </p>
         </div>
       {/if}
     </div>
@@ -76,7 +82,7 @@
     color: white;
   }
 
-  p.login {
+  p.alt-action {
     margin: 1rem;
     text-align: center;
     font-weight: 400;
