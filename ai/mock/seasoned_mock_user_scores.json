@@ -1,0 +1,2202 @@
+{
+    "user_1": {
+        "probability_statistics": {
+            "score": 4.4,
+            "avgscore": 6.0,
+            "currlevel": "intermediate",
+            "timespent": 7.0,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 2.8,
+            "avgscore": 5.7,
+            "currlevel": "intermediate",
+            "timespent": 2.2,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 8.7,
+            "avgscore": 8.5,
+            "currlevel": "advanced",
+            "timespent": 2.6,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 2.7,
+            "avgscore": 6.8,
+            "currlevel": "intermediate",
+            "timespent": 3.0,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 9.6,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 7.4,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 9.0,
+            "avgscore": 9.6,
+            "currlevel": "advanced",
+            "timespent": 6.8,
+            "revealanswer": 1
+        }
+    },
+    "user_2": {
+        "probability_statistics": {
+            "score": 4.5,
+            "avgscore": 8.0,
+            "currlevel": "intermediate",
+            "timespent": 2.2,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 4.1,
+            "avgscore": 7.1,
+            "currlevel": "intermediate",
+            "timespent": 8.5,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 8.2,
+            "avgscore": 8.2,
+            "currlevel": "advanced",
+            "timespent": 6.3,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 9.0,
+            "avgscore": 8.0,
+            "currlevel": "advanced",
+            "timespent": 5.4,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 5.6,
+            "avgscore": 7.4,
+            "currlevel": "intermediate",
+            "timespent": 5.4,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 9.5,
+            "avgscore": 8.6,
+            "currlevel": "advanced",
+            "timespent": 5.2,
+            "revealanswer": 0
+        }
+    },
+    "user_3": {
+        "probability_statistics": {
+            "score": 8.1,
+            "avgscore": 7.9,
+            "currlevel": "advanced",
+            "timespent": 3.8,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 8.6,
+            "avgscore": 9.1,
+            "currlevel": "advanced",
+            "timespent": 2.9,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 9.7,
+            "avgscore": 9.0,
+            "currlevel": "advanced",
+            "timespent": 7.0,
+            "revealanswer": 3
+        },
+        "algorithms": {
+            "score": 8.2,
+            "avgscore": 9.4,
+            "currlevel": "advanced",
+            "timespent": 7.6,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 9.3,
+            "avgscore": 8.8,
+            "currlevel": "advanced",
+            "timespent": 8.7,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 8.9,
+            "avgscore": 7.6,
+            "currlevel": "advanced",
+            "timespent": 6.0,
+            "revealanswer": 2
+        }
+    },
+    "user_4": {
+        "probability_statistics": {
+            "score": 9.0,
+            "avgscore": 8.4,
+            "currlevel": "advanced",
+            "timespent": 4.6,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 8.9,
+            "avgscore": 7.2,
+            "currlevel": "advanced",
+            "timespent": 1.4,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 10.0,
+            "avgscore": 7.2,
+            "currlevel": "advanced",
+            "timespent": 8.7,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 5.9,
+            "avgscore": 7.1,
+            "currlevel": "intermediate",
+            "timespent": 7.2,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 6.9,
+            "avgscore": 1.1,
+            "currlevel": "beginner",
+            "timespent": 6.8,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 8.9,
+            "avgscore": 6.2,
+            "currlevel": "intermediate",
+            "timespent": 7.9,
+            "revealanswer": 1
+        }
+    },
+    "user_5": {
+        "probability_statistics": {
+            "score": 3.1,
+            "avgscore": 6.9,
+            "currlevel": "intermediate",
+            "timespent": 7.4,
+            "revealanswer": 3
+        },
+        "data_structures": {
+            "score": 8.1,
+            "avgscore": 9.7,
+            "currlevel": "advanced",
+            "timespent": 8.1,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 3.5,
+            "avgscore": 4.2,
+            "currlevel": "beginner",
+            "timespent": 2.5,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 9.4,
+            "avgscore": 7.1,
+            "currlevel": "advanced",
+            "timespent": 6.0,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 8.1,
+            "avgscore": 7.6,
+            "currlevel": "advanced",
+            "timespent": 1.1,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 9.5,
+            "avgscore": 9.1,
+            "currlevel": "advanced",
+            "timespent": 5.5,
+            "revealanswer": 0
+        }
+    },
+    "user_6": {
+        "probability_statistics": {
+            "score": 9.6,
+            "avgscore": 8.2,
+            "currlevel": "advanced",
+            "timespent": 4.8,
+            "revealanswer": 3
+        },
+        "data_structures": {
+            "score": 8.0,
+            "avgscore": 1.6,
+            "currlevel": "beginner",
+            "timespent": 4.9,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 9.7,
+            "avgscore": 9.0,
+            "currlevel": "advanced",
+            "timespent": 2.8,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 9.2,
+            "avgscore": 8.7,
+            "currlevel": "advanced",
+            "timespent": 1.5,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 9.7,
+            "avgscore": 10.0,
+            "currlevel": "advanced",
+            "timespent": 7.0,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 6.7,
+            "avgscore": 7.5,
+            "currlevel": "intermediate",
+            "timespent": 8.0,
+            "revealanswer": 1
+        }
+    },
+    "user_7": {
+        "probability_statistics": {
+            "score": 1.1,
+            "avgscore": 5.6,
+            "currlevel": "intermediate",
+            "timespent": 3.0,
+            "revealanswer": 3
+        },
+        "data_structures": {
+            "score": 9.9,
+            "avgscore": 8.2,
+            "currlevel": "advanced",
+            "timespent": 9.3,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 4.9,
+            "avgscore": 7.1,
+            "currlevel": "intermediate",
+            "timespent": 2.0,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 9.1,
+            "avgscore": 7.5,
+            "currlevel": "advanced",
+            "timespent": 6.0,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 8.9,
+            "avgscore": 7.4,
+            "currlevel": "advanced",
+            "timespent": 2.1,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 8.6,
+            "avgscore": 5.5,
+            "currlevel": "intermediate",
+            "timespent": 7.8,
+            "revealanswer": 1
+        }
+    },
+    "user_8": {
+        "probability_statistics": {
+            "score": 9.3,
+            "avgscore": 8.0,
+            "currlevel": "advanced",
+            "timespent": 3.7,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 3.4,
+            "avgscore": 5.5,
+            "currlevel": "intermediate",
+            "timespent": 7.4,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 8.4,
+            "avgscore": 7.2,
+            "currlevel": "advanced",
+            "timespent": 7.4,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 8.0,
+            "avgscore": 8.9,
+            "currlevel": "advanced",
+            "timespent": 5.6,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 6.6,
+            "avgscore": 3.2,
+            "currlevel": "beginner",
+            "timespent": 4.9,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 9.1,
+            "avgscore": 8.2,
+            "currlevel": "advanced",
+            "timespent": 7.9,
+            "revealanswer": 1
+        }
+    },
+    "user_9": {
+        "probability_statistics": {
+            "score": 8.1,
+            "avgscore": 8.2,
+            "currlevel": "advanced",
+            "timespent": 4.8,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 8.8,
+            "avgscore": 8.2,
+            "currlevel": "advanced",
+            "timespent": 4.4,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 7.3,
+            "avgscore": 5.6,
+            "currlevel": "intermediate",
+            "timespent": 8.5,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 8.5,
+            "avgscore": 6.2,
+            "currlevel": "intermediate",
+            "timespent": 2.1,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 10.0,
+            "avgscore": 7.8,
+            "currlevel": "advanced",
+            "timespent": 7.6,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 9.1,
+            "avgscore": 10.0,
+            "currlevel": "advanced",
+            "timespent": 6.2,
+            "revealanswer": 3
+        }
+    },
+    "user_10": {
+        "probability_statistics": {
+            "score": 8.2,
+            "avgscore": 9.7,
+            "currlevel": "advanced",
+            "timespent": 1.3,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 3.0,
+            "avgscore": 5.1,
+            "currlevel": "intermediate",
+            "timespent": 6.0,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 8.0,
+            "avgscore": 8.0,
+            "currlevel": "advanced",
+            "timespent": 5.7,
+            "revealanswer": 3
+        },
+        "algorithms": {
+            "score": 9.9,
+            "avgscore": 7.3,
+            "currlevel": "advanced",
+            "timespent": 2.8,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 10.0,
+            "avgscore": 9.1,
+            "currlevel": "advanced",
+            "timespent": 1.6,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 7.2,
+            "avgscore": 7.8,
+            "currlevel": "intermediate",
+            "timespent": 4.5,
+            "revealanswer": 0
+        }
+    },
+    "user_11": {
+        "probability_statistics": {
+            "score": 9.5,
+            "avgscore": 6.5,
+            "currlevel": "intermediate",
+            "timespent": 8.2,
+            "revealanswer": 3
+        },
+        "data_structures": {
+            "score": 9.5,
+            "avgscore": 7.4,
+            "currlevel": "advanced",
+            "timespent": 9.0,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 3.8,
+            "avgscore": 5.3,
+            "currlevel": "intermediate",
+            "timespent": 9.6,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 8.7,
+            "avgscore": 8.4,
+            "currlevel": "advanced",
+            "timespent": 8.2,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 1.9,
+            "avgscore": 6.1,
+            "currlevel": "intermediate",
+            "timespent": 2.5,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 9.4,
+            "avgscore": 8.1,
+            "currlevel": "advanced",
+            "timespent": 5.3,
+            "revealanswer": 0
+        }
+    },
+    "user_12": {
+        "probability_statistics": {
+            "score": 8.9,
+            "avgscore": 9.8,
+            "currlevel": "advanced",
+            "timespent": 3.3,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 8.9,
+            "avgscore": 7.5,
+            "currlevel": "advanced",
+            "timespent": 7.5,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 8.7,
+            "avgscore": 8.8,
+            "currlevel": "advanced",
+            "timespent": 6.8,
+            "revealanswer": 2
+        },
+        "algorithms": {
+            "score": 9.7,
+            "avgscore": 7.1,
+            "currlevel": "advanced",
+            "timespent": 9.4,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 8.4,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 1.2,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 5.4,
+            "avgscore": 7.5,
+            "currlevel": "intermediate",
+            "timespent": 1.7,
+            "revealanswer": 0
+        }
+    },
+    "user_13": {
+        "probability_statistics": {
+            "score": 4.5,
+            "avgscore": 6.0,
+            "currlevel": "intermediate",
+            "timespent": 8.6,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 8.2,
+            "avgscore": 6.1,
+            "currlevel": "intermediate",
+            "timespent": 2.5,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 9.7,
+            "avgscore": 7.7,
+            "currlevel": "advanced",
+            "timespent": 6.2,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 8.1,
+            "avgscore": 9.9,
+            "currlevel": "advanced",
+            "timespent": 8.2,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 8.8,
+            "avgscore": 8.9,
+            "currlevel": "advanced",
+            "timespent": 6.5,
+            "revealanswer": 2
+        },
+        "machine_learning": {
+            "score": 9.2,
+            "avgscore": 7.7,
+            "currlevel": "advanced",
+            "timespent": 5.8,
+            "revealanswer": 2
+        }
+    },
+    "user_14": {
+        "probability_statistics": {
+            "score": 8.6,
+            "avgscore": 10.0,
+            "currlevel": "advanced",
+            "timespent": 6.9,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 8.7,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 8.7,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 9.1,
+            "avgscore": 9.0,
+            "currlevel": "advanced",
+            "timespent": 9.6,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 8.4,
+            "avgscore": 8.5,
+            "currlevel": "advanced",
+            "timespent": 4.0,
+            "revealanswer": 3
+        },
+        "dynamic_programming": {
+            "score": 1.8,
+            "avgscore": 4.5,
+            "currlevel": "beginner",
+            "timespent": 4.6,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 9.9,
+            "avgscore": 9.0,
+            "currlevel": "advanced",
+            "timespent": 8.5,
+            "revealanswer": 0
+        }
+    },
+    "user_15": {
+        "probability_statistics": {
+            "score": 1.3,
+            "avgscore": 6.7,
+            "currlevel": "intermediate",
+            "timespent": 9.5,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 9.2,
+            "avgscore": 8.0,
+            "currlevel": "advanced",
+            "timespent": 1.5,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 9.5,
+            "avgscore": 7.4,
+            "currlevel": "intermediate",
+            "timespent": 3.3,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 1.9,
+            "avgscore": 6.1,
+            "currlevel": "intermediate",
+            "timespent": 8.7,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 3.5,
+            "avgscore": 7.0,
+            "currlevel": "intermediate",
+            "timespent": 2.9,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 6.9,
+            "avgscore": 7.9,
+            "currlevel": "intermediate",
+            "timespent": 1.6,
+            "revealanswer": 0
+        }
+    },
+    "user_16": {
+        "probability_statistics": {
+            "score": 4.7,
+            "avgscore": 1.7,
+            "currlevel": "beginner",
+            "timespent": 6.3,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 8.9,
+            "avgscore": 9.6,
+            "currlevel": "advanced",
+            "timespent": 1.9,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 9.9,
+            "avgscore": 9.8,
+            "currlevel": "advanced",
+            "timespent": 9.3,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 8.9,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 3.8,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 8.8,
+            "avgscore": 8.1,
+            "currlevel": "advanced",
+            "timespent": 3.6,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 8.5,
+            "avgscore": 7.2,
+            "currlevel": "advanced",
+            "timespent": 4.5,
+            "revealanswer": 1
+        }
+    },
+    "user_17": {
+        "probability_statistics": {
+            "score": 2.2,
+            "avgscore": 7.3,
+            "currlevel": "intermediate",
+            "timespent": 2.0,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 4.5,
+            "avgscore": 1.4,
+            "currlevel": "beginner",
+            "timespent": 2.3,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 7.4,
+            "avgscore": 7.0,
+            "currlevel": "intermediate",
+            "timespent": 6.1,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 8.6,
+            "avgscore": 9.2,
+            "currlevel": "advanced",
+            "timespent": 5.3,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 8.3,
+            "avgscore": 7.5,
+            "currlevel": "advanced",
+            "timespent": 3.8,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 3.5,
+            "avgscore": 5.5,
+            "currlevel": "intermediate",
+            "timespent": 8.0,
+            "revealanswer": 3
+        }
+    },
+    "user_18": {
+        "probability_statistics": {
+            "score": 8.7,
+            "avgscore": 8.9,
+            "currlevel": "advanced",
+            "timespent": 2.7,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 8.1,
+            "avgscore": 8.2,
+            "currlevel": "advanced",
+            "timespent": 6.0,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 8.1,
+            "avgscore": 7.8,
+            "currlevel": "advanced",
+            "timespent": 9.9,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 8.9,
+            "avgscore": 5.4,
+            "currlevel": "intermediate",
+            "timespent": 1.5,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 7.7,
+            "avgscore": 1.9,
+            "currlevel": "beginner",
+            "timespent": 7.0,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 9.2,
+            "avgscore": 7.1,
+            "currlevel": "advanced",
+            "timespent": 4.4,
+            "revealanswer": 0
+        }
+    },
+    "user_19": {
+        "probability_statistics": {
+            "score": 8.5,
+            "avgscore": 7.2,
+            "currlevel": "advanced",
+            "timespent": 4.6,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 8.1,
+            "avgscore": 7.6,
+            "currlevel": "advanced",
+            "timespent": 7.7,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 3.5,
+            "avgscore": 5.5,
+            "currlevel": "intermediate",
+            "timespent": 3.9,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 9.4,
+            "avgscore": 7.3,
+            "currlevel": "advanced",
+            "timespent": 7.6,
+            "revealanswer": 2
+        },
+        "dynamic_programming": {
+            "score": 8.4,
+            "avgscore": 9.8,
+            "currlevel": "advanced",
+            "timespent": 9.1,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 9.0,
+            "avgscore": 9.4,
+            "currlevel": "advanced",
+            "timespent": 6.3,
+            "revealanswer": 0
+        }
+    },
+    "user_20": {
+        "probability_statistics": {
+            "score": 2.1,
+            "avgscore": 7.9,
+            "currlevel": "intermediate",
+            "timespent": 1.8,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 9.7,
+            "avgscore": 5.6,
+            "currlevel": "intermediate",
+            "timespent": 3.3,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 5.6,
+            "avgscore": 7.6,
+            "currlevel": "intermediate",
+            "timespent": 4.0,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 3.4,
+            "avgscore": 1.5,
+            "currlevel": "beginner",
+            "timespent": 9.7,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 9.2,
+            "avgscore": 9.3,
+            "currlevel": "advanced",
+            "timespent": 6.0,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 8.8,
+            "avgscore": 7.0,
+            "currlevel": "advanced",
+            "timespent": 3.8,
+            "revealanswer": 1
+        }
+    },
+    "user_21": {
+        "probability_statistics": {
+            "score": 4.6,
+            "avgscore": 5.2,
+            "currlevel": "intermediate",
+            "timespent": 1.0,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 6.3,
+            "avgscore": 7.1,
+            "currlevel": "intermediate",
+            "timespent": 2.3,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 9.8,
+            "avgscore": 6.6,
+            "currlevel": "intermediate",
+            "timespent": 1.3,
+            "revealanswer": 2
+        },
+        "algorithms": {
+            "score": 7.0,
+            "avgscore": 6.3,
+            "currlevel": "intermediate",
+            "timespent": 1.1,
+            "revealanswer": 2
+        },
+        "dynamic_programming": {
+            "score": 8.7,
+            "avgscore": 8.5,
+            "currlevel": "advanced",
+            "timespent": 4.6,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 8.3,
+            "avgscore": 8.6,
+            "currlevel": "advanced",
+            "timespent": 7.1,
+            "revealanswer": 1
+        }
+    },
+    "user_22": {
+        "probability_statistics": {
+            "score": 10.0,
+            "avgscore": 8.6,
+            "currlevel": "advanced",
+            "timespent": 3.6,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 9.9,
+            "avgscore": 8.1,
+            "currlevel": "advanced",
+            "timespent": 5.9,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 10.0,
+            "avgscore": 7.5,
+            "currlevel": "advanced",
+            "timespent": 3.5,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 9.3,
+            "avgscore": 7.8,
+            "currlevel": "advanced",
+            "timespent": 4.5,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 8.7,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 4.5,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 9.6,
+            "avgscore": 9.8,
+            "currlevel": "advanced",
+            "timespent": 5.8,
+            "revealanswer": 0
+        }
+    },
+    "user_23": {
+        "probability_statistics": {
+            "score": 9.1,
+            "avgscore": 7.6,
+            "currlevel": "advanced",
+            "timespent": 7.1,
+            "revealanswer": 2
+        },
+        "data_structures": {
+            "score": 9.0,
+            "avgscore": 8.9,
+            "currlevel": "advanced",
+            "timespent": 7.0,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 5.0,
+            "avgscore": 6.6,
+            "currlevel": "intermediate",
+            "timespent": 2.4,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 8.0,
+            "avgscore": 9.2,
+            "currlevel": "advanced",
+            "timespent": 8.4,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 3.2,
+            "avgscore": 1.8,
+            "currlevel": "beginner",
+            "timespent": 2.3,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 10.0,
+            "avgscore": 7.3,
+            "currlevel": "advanced",
+            "timespent": 2.0,
+            "revealanswer": 2
+        }
+    },
+    "user_24": {
+        "probability_statistics": {
+            "score": 2.9,
+            "avgscore": 5.1,
+            "currlevel": "intermediate",
+            "timespent": 8.4,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 9.5,
+            "avgscore": 8.9,
+            "currlevel": "advanced",
+            "timespent": 9.6,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 8.1,
+            "avgscore": 9.8,
+            "currlevel": "advanced",
+            "timespent": 9.2,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 9.8,
+            "avgscore": 9.7,
+            "currlevel": "advanced",
+            "timespent": 9.6,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 5.9,
+            "avgscore": 6.8,
+            "currlevel": "intermediate",
+            "timespent": 6.9,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 6.6,
+            "avgscore": 5.4,
+            "currlevel": "intermediate",
+            "timespent": 7.5,
+            "revealanswer": 0
+        }
+    },
+    "user_25": {
+        "probability_statistics": {
+            "score": 8.6,
+            "avgscore": 7.5,
+            "currlevel": "advanced",
+            "timespent": 7.9,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 1.4,
+            "avgscore": 6.8,
+            "currlevel": "intermediate",
+            "timespent": 1.6,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 8.4,
+            "avgscore": 7.8,
+            "currlevel": "advanced",
+            "timespent": 7.8,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 5.3,
+            "avgscore": 2.4,
+            "currlevel": "beginner",
+            "timespent": 9.3,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 4.1,
+            "avgscore": 5.5,
+            "currlevel": "intermediate",
+            "timespent": 5.9,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 9.2,
+            "avgscore": 5.0,
+            "currlevel": "intermediate",
+            "timespent": 9.0,
+            "revealanswer": 3
+        }
+    },
+    "user_26": {
+        "probability_statistics": {
+            "score": 9.3,
+            "avgscore": 7.5,
+            "currlevel": "advanced",
+            "timespent": 3.1,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 8.6,
+            "avgscore": 7.2,
+            "currlevel": "advanced",
+            "timespent": 4.7,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 6.3,
+            "avgscore": 7.6,
+            "currlevel": "intermediate",
+            "timespent": 7.5,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 5.6,
+            "avgscore": 7.3,
+            "currlevel": "intermediate",
+            "timespent": 6.8,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 9.6,
+            "avgscore": 8.8,
+            "currlevel": "advanced",
+            "timespent": 8.4,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 9.2,
+            "avgscore": 8.0,
+            "currlevel": "intermediate",
+            "timespent": 8.6,
+            "revealanswer": 0
+        }
+    },
+    "user_27": {
+        "probability_statistics": {
+            "score": 2.2,
+            "avgscore": 5.4,
+            "currlevel": "intermediate",
+            "timespent": 6.5,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 9.0,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 3.8,
+            "revealanswer": 2
+        },
+        "object_oriented_programming": {
+            "score": 9.1,
+            "avgscore": 5.7,
+            "currlevel": "intermediate",
+            "timespent": 6.6,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 2.8,
+            "avgscore": 5.7,
+            "currlevel": "intermediate",
+            "timespent": 6.9,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 2.7,
+            "avgscore": 7.6,
+            "currlevel": "intermediate",
+            "timespent": 5.0,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 8.1,
+            "avgscore": 9.4,
+            "currlevel": "advanced",
+            "timespent": 3.9,
+            "revealanswer": 2
+        }
+    },
+    "user_28": {
+        "probability_statistics": {
+            "score": 8.5,
+            "avgscore": 9.2,
+            "currlevel": "advanced",
+            "timespent": 6.8,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 8.0,
+            "avgscore": 9.7,
+            "currlevel": "advanced",
+            "timespent": 7.5,
+            "revealanswer": 3
+        },
+        "object_oriented_programming": {
+            "score": 9.3,
+            "avgscore": 8.5,
+            "currlevel": "advanced",
+            "timespent": 8.6,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 8.0,
+            "avgscore": 5.6,
+            "currlevel": "intermediate",
+            "timespent": 4.2,
+            "revealanswer": 2
+        },
+        "dynamic_programming": {
+            "score": 6.3,
+            "avgscore": 8.0,
+            "currlevel": "intermediate",
+            "timespent": 7.0,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 9.8,
+            "avgscore": 7.8,
+            "currlevel": "advanced",
+            "timespent": 5.6,
+            "revealanswer": 1
+        }
+    },
+    "user_29": {
+        "probability_statistics": {
+            "score": 9.9,
+            "avgscore": 6.2,
+            "currlevel": "intermediate",
+            "timespent": 7.9,
+            "revealanswer": 3
+        },
+        "data_structures": {
+            "score": 9.6,
+            "avgscore": 9.9,
+            "currlevel": "advanced",
+            "timespent": 3.4,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 8.6,
+            "avgscore": 9.7,
+            "currlevel": "advanced",
+            "timespent": 6.0,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 8.4,
+            "avgscore": 7.3,
+            "currlevel": "advanced",
+            "timespent": 1.5,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 5.5,
+            "avgscore": 5.5,
+            "currlevel": "intermediate",
+            "timespent": 6.0,
+            "revealanswer": 3
+        },
+        "machine_learning": {
+            "score": 9.3,
+            "avgscore": 8.0,
+            "currlevel": "intermediate",
+            "timespent": 7.4,
+            "revealanswer": 1
+        }
+    },
+    "user_30": {
+        "probability_statistics": {
+            "score": 7.9,
+            "avgscore": 6.7,
+            "currlevel": "intermediate",
+            "timespent": 9.9,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 8.2,
+            "avgscore": 9.4,
+            "currlevel": "advanced",
+            "timespent": 9.4,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 8.9,
+            "avgscore": 8.3,
+            "currlevel": "advanced",
+            "timespent": 5.4,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 9.8,
+            "avgscore": 8.7,
+            "currlevel": "advanced",
+            "timespent": 6.6,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 3.9,
+            "avgscore": 6.2,
+            "currlevel": "intermediate",
+            "timespent": 5.3,
+            "revealanswer": 2
+        },
+        "machine_learning": {
+            "score": 9.4,
+            "avgscore": 7.7,
+            "currlevel": "advanced",
+            "timespent": 1.0,
+            "revealanswer": 1
+        }
+    },
+    "user_31": {
+        "probability_statistics": {
+            "score": 8.5,
+            "avgscore": 8.1,
+            "currlevel": "advanced",
+            "timespent": 1.1,
+            "revealanswer": 2
+        },
+        "data_structures": {
+            "score": 9.1,
+            "avgscore": 8.9,
+            "currlevel": "advanced",
+            "timespent": 7.8,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 6.0,
+            "avgscore": 6.6,
+            "currlevel": "intermediate",
+            "timespent": 2.1,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 8.2,
+            "avgscore": 8.1,
+            "currlevel": "advanced",
+            "timespent": 2.1,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 8.8,
+            "avgscore": 8.9,
+            "currlevel": "advanced",
+            "timespent": 4.0,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 8.9,
+            "avgscore": 8.6,
+            "currlevel": "advanced",
+            "timespent": 3.0,
+            "revealanswer": 1
+        }
+    },
+    "user_32": {
+        "probability_statistics": {
+            "score": 2.8,
+            "avgscore": 6.8,
+            "currlevel": "intermediate",
+            "timespent": 4.8,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 7.9,
+            "avgscore": 7.0,
+            "currlevel": "intermediate",
+            "timespent": 2.2,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 8.2,
+            "avgscore": 8.8,
+            "currlevel": "advanced",
+            "timespent": 1.9,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 8.9,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 3.4,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 9.0,
+            "avgscore": 8.2,
+            "currlevel": "advanced",
+            "timespent": 2.8,
+            "revealanswer": 2
+        },
+        "machine_learning": {
+            "score": 8.6,
+            "avgscore": 8.3,
+            "currlevel": "advanced",
+            "timespent": 1.7,
+            "revealanswer": 0
+        }
+    },
+    "user_33": {
+        "probability_statistics": {
+            "score": 1.9,
+            "avgscore": 1.3,
+            "currlevel": "beginner",
+            "timespent": 1.5,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 4.9,
+            "avgscore": 5.6,
+            "currlevel": "intermediate",
+            "timespent": 6.6,
+            "revealanswer": 3
+        },
+        "object_oriented_programming": {
+            "score": 9.8,
+            "avgscore": 7.1,
+            "currlevel": "advanced",
+            "timespent": 3.3,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 3.7,
+            "avgscore": 6.0,
+            "currlevel": "intermediate",
+            "timespent": 9.4,
+            "revealanswer": 2
+        },
+        "dynamic_programming": {
+            "score": 8.2,
+            "avgscore": 9.3,
+            "currlevel": "advanced",
+            "timespent": 6.9,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 8.1,
+            "avgscore": 9.6,
+            "currlevel": "advanced",
+            "timespent": 9.5,
+            "revealanswer": 0
+        }
+    },
+    "user_34": {
+        "probability_statistics": {
+            "score": 9.9,
+            "avgscore": 9.6,
+            "currlevel": "advanced",
+            "timespent": 5.1,
+            "revealanswer": 3
+        },
+        "data_structures": {
+            "score": 9.4,
+            "avgscore": 8.0,
+            "currlevel": "advanced",
+            "timespent": 4.3,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 1.6,
+            "avgscore": 5.1,
+            "currlevel": "intermediate",
+            "timespent": 4.7,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 8.6,
+            "avgscore": 9.3,
+            "currlevel": "advanced",
+            "timespent": 9.2,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 8.5,
+            "avgscore": 9.0,
+            "currlevel": "advanced",
+            "timespent": 2.5,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 8.3,
+            "avgscore": 8.0,
+            "currlevel": "advanced",
+            "timespent": 2.5,
+            "revealanswer": 1
+        }
+    },
+    "user_35": {
+        "probability_statistics": {
+            "score": 2.0,
+            "avgscore": 1.5,
+            "currlevel": "beginner",
+            "timespent": 8.6,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 8.8,
+            "avgscore": 7.2,
+            "currlevel": "advanced",
+            "timespent": 9.7,
+            "revealanswer": 3
+        },
+        "object_oriented_programming": {
+            "score": 9.9,
+            "avgscore": 9.8,
+            "currlevel": "advanced",
+            "timespent": 1.6,
+            "revealanswer": 3
+        },
+        "algorithms": {
+            "score": 9.5,
+            "avgscore": 8.0,
+            "currlevel": "advanced",
+            "timespent": 8.0,
+            "revealanswer": 3
+        },
+        "dynamic_programming": {
+            "score": 8.2,
+            "avgscore": 9.1,
+            "currlevel": "advanced",
+            "timespent": 2.4,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 9.4,
+            "avgscore": 8.2,
+            "currlevel": "advanced",
+            "timespent": 6.9,
+            "revealanswer": 2
+        }
+    },
+    "user_36": {
+        "probability_statistics": {
+            "score": 3.8,
+            "avgscore": 7.0,
+            "currlevel": "intermediate",
+            "timespent": 8.9,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 8.6,
+            "avgscore": 7.3,
+            "currlevel": "advanced",
+            "timespent": 7.8,
+            "revealanswer": 3
+        },
+        "object_oriented_programming": {
+            "score": 8.1,
+            "avgscore": 7.1,
+            "currlevel": "advanced",
+            "timespent": 9.7,
+            "revealanswer": 3
+        },
+        "algorithms": {
+            "score": 2.2,
+            "avgscore": 6.1,
+            "currlevel": "intermediate",
+            "timespent": 8.9,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 5.7,
+            "avgscore": 7.8,
+            "currlevel": "intermediate",
+            "timespent": 5.7,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 8.4,
+            "avgscore": 9.3,
+            "currlevel": "advanced",
+            "timespent": 8.0,
+            "revealanswer": 0
+        }
+    },
+    "user_37": {
+        "probability_statistics": {
+            "score": 9.8,
+            "avgscore": 7.7,
+            "currlevel": "advanced",
+            "timespent": 9.5,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 9.9,
+            "avgscore": 9.4,
+            "currlevel": "advanced",
+            "timespent": 1.0,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 8.4,
+            "avgscore": 6.5,
+            "currlevel": "intermediate",
+            "timespent": 1.8,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 8.6,
+            "avgscore": 8.4,
+            "currlevel": "advanced",
+            "timespent": 6.0,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 9.4,
+            "avgscore": 9.9,
+            "currlevel": "advanced",
+            "timespent": 2.4,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 2.8,
+            "avgscore": 6.6,
+            "currlevel": "intermediate",
+            "timespent": 6.6,
+            "revealanswer": 1
+        }
+    },
+    "user_38": {
+        "probability_statistics": {
+            "score": 9.9,
+            "avgscore": 7.9,
+            "currlevel": "intermediate",
+            "timespent": 6.8,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 4.0,
+            "avgscore": 6.3,
+            "currlevel": "intermediate",
+            "timespent": 1.1,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 6.3,
+            "avgscore": 7.5,
+            "currlevel": "intermediate",
+            "timespent": 6.1,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 9.8,
+            "avgscore": 8.8,
+            "currlevel": "advanced",
+            "timespent": 7.6,
+            "revealanswer": 3
+        },
+        "dynamic_programming": {
+            "score": 9.4,
+            "avgscore": 8.5,
+            "currlevel": "advanced",
+            "timespent": 7.7,
+            "revealanswer": 2
+        },
+        "machine_learning": {
+            "score": 10.0,
+            "avgscore": 8.3,
+            "currlevel": "advanced",
+            "timespent": 6.0,
+            "revealanswer": 0
+        }
+    },
+    "user_39": {
+        "probability_statistics": {
+            "score": 8.7,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 5.5,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 8.7,
+            "avgscore": 7.8,
+            "currlevel": "intermediate",
+            "timespent": 6.8,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 9.5,
+            "avgscore": 9.2,
+            "currlevel": "advanced",
+            "timespent": 8.4,
+            "revealanswer": 3
+        },
+        "algorithms": {
+            "score": 9.4,
+            "avgscore": 7.8,
+            "currlevel": "advanced",
+            "timespent": 6.0,
+            "revealanswer": 3
+        },
+        "dynamic_programming": {
+            "score": 5.3,
+            "avgscore": 7.4,
+            "currlevel": "intermediate",
+            "timespent": 6.6,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 4.9,
+            "avgscore": 4.5,
+            "currlevel": "beginner",
+            "timespent": 8.4,
+            "revealanswer": 0
+        }
+    },
+    "user_40": {
+        "probability_statistics": {
+            "score": 6.6,
+            "avgscore": 5.5,
+            "currlevel": "intermediate",
+            "timespent": 3.2,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 9.2,
+            "avgscore": 8.5,
+            "currlevel": "advanced",
+            "timespent": 3.8,
+            "revealanswer": 3
+        },
+        "object_oriented_programming": {
+            "score": 7.4,
+            "avgscore": 3.8,
+            "currlevel": "beginner",
+            "timespent": 4.6,
+            "revealanswer": 3
+        },
+        "algorithms": {
+            "score": 8.8,
+            "avgscore": 8.0,
+            "currlevel": "advanced",
+            "timespent": 9.4,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 3.0,
+            "avgscore": 7.1,
+            "currlevel": "intermediate",
+            "timespent": 6.4,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 9.2,
+            "avgscore": 9.8,
+            "currlevel": "advanced",
+            "timespent": 2.7,
+            "revealanswer": 1
+        }
+    },
+    "user_41": {
+        "probability_statistics": {
+            "score": 8.8,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 1.9,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 7.9,
+            "avgscore": 7.7,
+            "currlevel": "intermediate",
+            "timespent": 2.3,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 5.9,
+            "avgscore": 6.0,
+            "currlevel": "intermediate",
+            "timespent": 3.5,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 4.9,
+            "avgscore": 5.3,
+            "currlevel": "intermediate",
+            "timespent": 9.5,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 8.4,
+            "avgscore": 7.6,
+            "currlevel": "advanced",
+            "timespent": 2.8,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 7.9,
+            "avgscore": 6.4,
+            "currlevel": "intermediate",
+            "timespent": 9.2,
+            "revealanswer": 1
+        }
+    },
+    "user_42": {
+        "probability_statistics": {
+            "score": 3.5,
+            "avgscore": 5.2,
+            "currlevel": "intermediate",
+            "timespent": 3.3,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 5.3,
+            "avgscore": 5.6,
+            "currlevel": "intermediate",
+            "timespent": 3.9,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 9.0,
+            "avgscore": 6.2,
+            "currlevel": "intermediate",
+            "timespent": 9.0,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 9.8,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 1.3,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 9.8,
+            "avgscore": 7.3,
+            "currlevel": "advanced",
+            "timespent": 4.8,
+            "revealanswer": 2
+        },
+        "machine_learning": {
+            "score": 5.0,
+            "avgscore": 6.9,
+            "currlevel": "intermediate",
+            "timespent": 5.7,
+            "revealanswer": 1
+        }
+    },
+    "user_43": {
+        "probability_statistics": {
+            "score": 5.8,
+            "avgscore": 5.6,
+            "currlevel": "intermediate",
+            "timespent": 2.2,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 8.2,
+            "avgscore": 7.4,
+            "currlevel": "advanced",
+            "timespent": 8.6,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 7.7,
+            "avgscore": 7.4,
+            "currlevel": "intermediate",
+            "timespent": 6.6,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 4.9,
+            "avgscore": 7.0,
+            "currlevel": "intermediate",
+            "timespent": 1.1,
+            "revealanswer": 3
+        },
+        "dynamic_programming": {
+            "score": 9.8,
+            "avgscore": 7.5,
+            "currlevel": "advanced",
+            "timespent": 6.9,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 9.7,
+            "avgscore": 7.0,
+            "currlevel": "advanced",
+            "timespent": 3.7,
+            "revealanswer": 1
+        }
+    },
+    "user_44": {
+        "probability_statistics": {
+            "score": 3.0,
+            "avgscore": 6.9,
+            "currlevel": "intermediate",
+            "timespent": 6.9,
+            "revealanswer": 3
+        },
+        "data_structures": {
+            "score": 8.6,
+            "avgscore": 8.8,
+            "currlevel": "advanced",
+            "timespent": 6.0,
+            "revealanswer": 2
+        },
+        "object_oriented_programming": {
+            "score": 9.2,
+            "avgscore": 6.4,
+            "currlevel": "intermediate",
+            "timespent": 7.4,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 9.4,
+            "avgscore": 5.0,
+            "currlevel": "intermediate",
+            "timespent": 3.1,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 4.7,
+            "avgscore": 6.4,
+            "currlevel": "intermediate",
+            "timespent": 2.1,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 9.7,
+            "avgscore": 9.4,
+            "currlevel": "advanced",
+            "timespent": 1.4,
+            "revealanswer": 1
+        }
+    },
+    "user_45": {
+        "probability_statistics": {
+            "score": 9.7,
+            "avgscore": 8.3,
+            "currlevel": "advanced",
+            "timespent": 6.5,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 8.2,
+            "avgscore": 9.3,
+            "currlevel": "advanced",
+            "timespent": 8.9,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 8.6,
+            "avgscore": 9.4,
+            "currlevel": "advanced",
+            "timespent": 1.3,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 9.4,
+            "avgscore": 8.9,
+            "currlevel": "advanced",
+            "timespent": 9.1,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 7.3,
+            "avgscore": 7.7,
+            "currlevel": "intermediate",
+            "timespent": 4.6,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 7.4,
+            "avgscore": 7.8,
+            "currlevel": "intermediate",
+            "timespent": 9.0,
+            "revealanswer": 0
+        }
+    },
+    "user_46": {
+        "probability_statistics": {
+            "score": 8.3,
+            "avgscore": 7.6,
+            "currlevel": "advanced",
+            "timespent": 1.7,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 9.6,
+            "avgscore": 8.3,
+            "currlevel": "advanced",
+            "timespent": 8.1,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 9.4,
+            "avgscore": 8.5,
+            "currlevel": "advanced",
+            "timespent": 9.6,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 8.2,
+            "avgscore": 9.5,
+            "currlevel": "advanced",
+            "timespent": 4.3,
+            "revealanswer": 2
+        },
+        "dynamic_programming": {
+            "score": 2.6,
+            "avgscore": 5.9,
+            "currlevel": "intermediate",
+            "timespent": 2.5,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 9.0,
+            "avgscore": 10.0,
+            "currlevel": "advanced",
+            "timespent": 3.8,
+            "revealanswer": 1
+        }
+    },
+    "user_47": {
+        "probability_statistics": {
+            "score": 8.9,
+            "avgscore": 9.2,
+            "currlevel": "advanced",
+            "timespent": 2.4,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 8.5,
+            "avgscore": 7.5,
+            "currlevel": "advanced",
+            "timespent": 3.2,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 1.7,
+            "avgscore": 7.7,
+            "currlevel": "intermediate",
+            "timespent": 9.1,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 6.9,
+            "avgscore": 7.0,
+            "currlevel": "intermediate",
+            "timespent": 3.0,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 3.7,
+            "avgscore": 6.9,
+            "currlevel": "intermediate",
+            "timespent": 8.7,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 2.2,
+            "avgscore": 6.7,
+            "currlevel": "intermediate",
+            "timespent": 5.6,
+            "revealanswer": 0
+        }
+    },
+    "user_48": {
+        "probability_statistics": {
+            "score": 9.2,
+            "avgscore": 9.8,
+            "currlevel": "advanced",
+            "timespent": 8.4,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 9.5,
+            "avgscore": 8.7,
+            "currlevel": "advanced",
+            "timespent": 4.6,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 8.0,
+            "avgscore": 7.8,
+            "currlevel": "advanced",
+            "timespent": 4.2,
+            "revealanswer": 1
+        },
+        "algorithms": {
+            "score": 9.9,
+            "avgscore": 8.6,
+            "currlevel": "advanced",
+            "timespent": 4.5,
+            "revealanswer": 0
+        },
+        "dynamic_programming": {
+            "score": 10.0,
+            "avgscore": 9.7,
+            "currlevel": "advanced",
+            "timespent": 9.8,
+            "revealanswer": 0
+        },
+        "machine_learning": {
+            "score": 1.6,
+            "avgscore": 6.5,
+            "currlevel": "intermediate",
+            "timespent": 6.6,
+            "revealanswer": 1
+        }
+    },
+    "user_49": {
+        "probability_statistics": {
+            "score": 3.0,
+            "avgscore": 6.5,
+            "currlevel": "intermediate",
+            "timespent": 7.8,
+            "revealanswer": 0
+        },
+        "data_structures": {
+            "score": 8.3,
+            "avgscore": 9.7,
+            "currlevel": "advanced",
+            "timespent": 4.6,
+            "revealanswer": 0
+        },
+        "object_oriented_programming": {
+            "score": 9.4,
+            "avgscore": 9.3,
+            "currlevel": "advanced",
+            "timespent": 8.4,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 9.0,
+            "avgscore": 9.3,
+            "currlevel": "advanced",
+            "timespent": 4.2,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 8.4,
+            "avgscore": 9.8,
+            "currlevel": "advanced",
+            "timespent": 5.2,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 8.5,
+            "avgscore": 7.3,
+            "currlevel": "advanced",
+            "timespent": 4.3,
+            "revealanswer": 0
+        }
+    },
+    "user_50": {
+        "probability_statistics": {
+            "score": 8.7,
+            "avgscore": 8.5,
+            "currlevel": "advanced",
+            "timespent": 4.3,
+            "revealanswer": 1
+        },
+        "data_structures": {
+            "score": 8.0,
+            "avgscore": 5.0,
+            "currlevel": "intermediate",
+            "timespent": 1.8,
+            "revealanswer": 1
+        },
+        "object_oriented_programming": {
+            "score": 10.0,
+            "avgscore": 7.7,
+            "currlevel": "advanced",
+            "timespent": 6.9,
+            "revealanswer": 0
+        },
+        "algorithms": {
+            "score": 8.4,
+            "avgscore": 8.9,
+            "currlevel": "advanced",
+            "timespent": 2.6,
+            "revealanswer": 1
+        },
+        "dynamic_programming": {
+            "score": 6.5,
+            "avgscore": 6.7,
+            "currlevel": "intermediate",
+            "timespent": 1.3,
+            "revealanswer": 1
+        },
+        "machine_learning": {
+            "score": 4.7,
+            "avgscore": 7.1,
+            "currlevel": "intermediate",
+            "timespent": 1.8,
+            "revealanswer": 0
+        }
+    }
+}

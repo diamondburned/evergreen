@@ -4,15 +4,15 @@
     "levels": [
       {
         "label": "Combinatorics",
-        "description": "The study of counting and arranging objects."
+        "description": "Dive into a strategy game of dynamics and arrangement to master the art of counting!"
       },
       {
         "label": "Regression",
-        "description": "The study of the relationship between variables."
+        "description": "Step into a world of detective work to predict outcomes and unravel the mysteries behind data points!"
       },
       {
         "label": "Bayesian Statistics",
-        "description": "The study of probability as a measure of uncertainty."
+        "description": "Embark on an adventure where each clue and piece of evidence you gather helps refine your predictions!"
       }
     ]
   },
@@ -20,7 +20,7 @@
     "label": "Data Structures",
     "levels": [
       {
-        "label": "Arrays",
+        "label": "Linked Lists",
         "description": "A collection of elements."
       },
       {
@@ -28,7 +28,7 @@
         "description": "A tree data structure in which each node has at most two children."
       },
       {
-        "label": "Linked Lists",
+        "label": "Biparite Graphs",
         "description": "A linear collection of elements, where each element points to the next."
       }
     ]
