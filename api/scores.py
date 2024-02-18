@@ -88,7 +88,6 @@ class SubmitScoreRequest(BaseModel):
     rounds: list[ScoreSubmission.RoundInfo]
     average_score: float
     time_taken: Annotated[float, "Time taken in seconds."]
-    revealed_answer: bool
 
 
 @router.post("/scores")
