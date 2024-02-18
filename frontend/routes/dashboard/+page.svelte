@@ -234,7 +234,7 @@
   }
 
   section:last-child {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 
   section.container {
@@ -251,7 +251,12 @@
       padding: 1rem;
       border: 1px solid var(--primary);
       border-radius: 15px;
-      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      transition: all 0.15s ease-in-out;
+
+      &:hover {
+        box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.1);
+        transform: scale(1.025);
+      }
 
       h3 {
         margin: 0.5rem 0;
