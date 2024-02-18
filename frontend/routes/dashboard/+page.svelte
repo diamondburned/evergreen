@@ -9,7 +9,7 @@
   import { listScores, type ScoreSubmission } from "$lib/api";
   import { onMount } from "svelte";
 
-  import { Chart, TimeScale, HistogramSeries, LineSeries } from "svelte-lightweight-charts";
+  import { Chart, HistogramSeries, LineSeries } from "svelte-lightweight-charts";
   import { ColorType, type DeepPartial, type TimeChartOptions } from "lightweight-charts";
 
   $: categories = categories_ as unknown as Categories; // fix typescript error

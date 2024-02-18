@@ -271,7 +271,7 @@
         }
 
         button {
-          max-width: fit-content;
+          width: fit-content;
         }
       }
     }

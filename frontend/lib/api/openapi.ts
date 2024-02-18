@@ -60,26 +60,26 @@ export type LoginSessionRequest = {
     email: string;
     password: string;
 };
+export type RoundInfo = {
+    score: number;
+    revealed_answer: boolean;
+};
 export type ScoreSubmission = {
     id?: number | null;
     game_category: string;
     game_difficulty: GameDifficulty;
     user_id: string;
-    score?: number;
+    rounds: RoundInfo[];
+    average_score: number;
     time_taken: number;
-    revealed_answer: boolean;
     submitted_at?: string;
 };
 export type SubmitScoreRequest = {
     game_category: string;
     game_difficulty: GameDifficulty;
-    score: number;
-    time_taken: number;
-    revealed_answer: boolean;
-};
-export type AverageScoreResponse = {
+    rounds: RoundInfo[];
     average_score: number;
-    total_scores: number;
+    time_taken: number;
 };
 /**
  * Get Asset
@@ -235,26 +235,6 @@ export function submitScore(submitScoreRequest: SubmitScoreRequest, opts?: Oazap
         method: "POST",
         body: submitScoreRequest
     })));
-}
-/**
- * Average Score
- */
-export function averageScore({ gameCategory, gameDifficulty }: {
-    gameCategory?: string | null;
-    gameDifficulty?: GameDifficulty | null;
-} = {}, opts?: Oazapfts.RequestOpts) {
-    return oazapfts.ok(oazapfts.fetchJson<{
-        status: 200;
-        data: AverageScoreResponse;
-    } | {
-        status: 422;
-        data: HttpValidationError;
-    }>(`/api/scores/average${QS.query(QS.explode({
-        game_category: gameCategory,
-        game_difficulty: gameDifficulty
-    }))}`, {
-        ...opts
-    }));
 }
 export enum GameDifficulty {
     Beginner = "beginner",

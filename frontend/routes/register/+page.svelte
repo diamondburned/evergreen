@@ -9,8 +9,7 @@
   $: valid = !!(email && password && preferredName);
 
   async function submit() {
-    const session = await registerSession({ email, password, display_name: preferredName });
-    $token = session.token;
+    await registerSession({ email, password, display_name: preferredName });
     $isLoggedIn = true;
     goto("/");
   }
