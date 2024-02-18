@@ -21,15 +21,15 @@
     "levels": [
       {
         "label": "Linked Lists",
-        "description": "A collection of elements."
+        "description": "DIve into a story where you navigate through clingy nodes, mastering the art of manipulating data sequences!"
       },
       {
         "label": "Binary Trees",
-        "description": "A tree data structure in which each node has at most two children."
+        "description": "Explore the realm of nature and hierarchy, and learn how to structure data to enhance access!"
       },
       {
         "label": "Biparite Graphs",
-        "description": "A linear collection of elements, where each element points to the next."
+        "description": "Challenge yourself in an intricate labyrinth and decipher complex relationships within datasets!"
       }
     ]
   },
@@ -38,15 +38,15 @@
     "levels": [
       {
         "label": "Classes",
-        "description": "A blueprint for creating objects."
+        "description": "Step into the structural architect's shoes, where you design shape entities that evolve in a universe of your making!"
       },
       {
         "label": "Polymorphism",
-        "description": "The ability to present the same interface for different data types."
+        "description": "Master the arcane skill of puppetry by creating flexible and reusuable entities!"
       },
       {
         "label": "Design Patterns",
-        "description": "A general reusable solution to a commonly occurring problem."
+        "description": "Try your hand at elegant caligraphy via a codex of tried-and-tested strategies!"
       }
     ]
   },
@@ -54,16 +54,16 @@
     "label": "Algorithms",
     "levels": [
       {
-        "label": "Binary Search",
-        "description": "A search algorithm that finds the position of a target value within a sorted array."
+        "label": "Dijkstra's",
+        "description": "Set out on an interstellar quest, while conquering the shortest paths toward home!"
       },
       {
-        "label": "Dijkstra's",
-        "description": "An algorithm for finding the shortest path between nodes in a graph."
+        "label": "Kruskal's",
+        "description": "Traverse the art of connection, where you'll build bridges and unite scattered islands into a single landmass!"
       },
       {
         "label": "NP-Completeness",
-        "description": "A class of problems for which no efficient solution is known."
+        "description": "Enter the domain of unsolved mind games and challenge yourself at the limits of computation!"
       }
     ]
   },
@@ -72,15 +72,15 @@
     "levels": [
       {
         "label": "Fibonacci Sequence",
-        "description": "A sequence of numbers in which each number is the sum of the two preceding ones."
+        "description": "Unravel the spirals of growth, where each step builds upon the last to master the power of addition!"
       },
       {
         "label": "Memoization",
-        "description": "An optimization technique used primarily to speed up computer programs."
+        "description": "Reminisce forgotten magic to cast future spells more swifty!"
       },
       {
         "label": "State Machine Optimization",
-        "description": "A mathematical model of computation used to design both computer programs and sequential logic circuits."
+        "description": "Step into your role as emperor of a warring nation, and lead your people to a quick victory!"
       }
     ]
   },
