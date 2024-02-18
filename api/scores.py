@@ -90,12 +90,24 @@ class SubmitScoreRequest(BaseModel):
     time_taken: Annotated[float, "Time taken in seconds."]
 
 
+class SubmitScoreResponse(BaseModel):
+    id: int
+    game_category: str
+    game_difficulty: GameDifficulty
+    rounds: list[ScoreSubmission.RoundInfo]
+    average_score: float
+    time_taken: float
+    submitted_at: datetime
+
+    # TODO: add fields from the prediction model.
+
+
 @router.post("/scores")
 async def submit_score(
     req: SubmitScoreRequest,
     db: Database = Depends(db.use),
     user_id: str = Depends(authorize),
-) -> ScoreSubmission:
+) -> SubmitScoreResponse:
     async with db.begin_nested():
         score = ScoreSubmission(
             game_category=req.game_category,
@@ -106,5 +118,16 @@ async def submit_score(
             time_taken=req.time_taken,
         )
         db.add(score)
+
     await db.refresh(score)
-    return score
+    assert score.id is not None
+
+    return SubmitScoreResponse(
+        id=score.id,
+        game_category=score.game_category,
+        game_difficulty=score.game_difficulty,
+        rounds=score.rounds,
+        average_score=score.average_score,
+        time_taken=score.time_taken,
+        submitted_at=score.submitted_at,
+    )
